@@ -1,4 +1,4 @@
-const API_URL = 'https://54eb63fb51961b.lhr.life';
+const API_URL = 'http://localhost:8080';
 
 export const API_ROUTES = {
   login: `${API_URL}/login`,

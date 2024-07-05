@@ -1,13 +1,14 @@
 import React from 'react';
 import Header from './header';
 import Footer from './footer';
-import './home.css'
+import MiddleContent from './MiddleContent';
+import './home.css';
 
 const HomePage = () => {
     return (
         <div className="home-container">
             <Header />
-            {/* Middle content can be added here */}
+            <MiddleContent />
             <Footer />
         </div>
     );
