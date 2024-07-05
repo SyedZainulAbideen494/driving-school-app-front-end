@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { FaUser, FaEnvelope, FaLock } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './signup.css';
+import { API_ROUTES } from '../app_modules/apiRoutes';
 
 const SignUp = () => {
     const [username, setUsername] = useState('');
@@ -9,6 +10,8 @@ const SignUp = () => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [passwordVisible, setPasswordVisible] = useState(false);
+    const [error, setError] = useState(null);
+    const nav = useNavigate()
 
     const handleUsernameChange = (e) => {
         setUsername(e.target.value);
@@ -33,15 +36,56 @@ const SignUp = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // Add your sign-up logic here (e.g., fetch POST request to API)
+        // Validate passwords match
+        if (password !== confirmPassword) {
+            setError('Passwords do not match');
+            return;
+        }
 
-        console.log('Submitting sign-up form:', { username, email, password });
+        // Prepare user data for POST request
+        const userData = {
+            username: username,
+            email: email,
+            password: password
+        };
+
+        try {
+            // Send POST request to server
+            const response = await fetch(API_ROUTES.signup, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(userData),
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                setError(errorData.error || 'Sign-up failed');
+                return;
+            }
+
+            // Clear form fields on successful sign-up
+            setUsername('');
+            setEmail('');
+            setPassword('');
+            setConfirmPassword('');
+            setError(null);
+
+            console.log('User registered successfully!');
+            nav('/login')
+            // Optionally redirect to login page or another route
+        } catch (error) {
+            console.error('Error signing up:', error);
+            setError('Error signing up. Please try again later.');
+        }
     };
 
     return (
         <div className="signup-container">
             <h2>Sign Up</h2>
             <form onSubmit={handleSubmit}>
+                {error && <p className="error-message">{error}</p>}
                 <div className="input-container-login">
                     <FaUser className="icon" />
                     <input

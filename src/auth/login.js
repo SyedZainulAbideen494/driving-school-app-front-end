@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { FaEnvelope, FaLock } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './login.css';
+import { API_ROUTES } from '../app_modules/apiRoutes';
 
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [passwordVisible, setPasswordVisible] = useState(false);
+    const nav = useNavigate()
 
     const handleEmailChange = (e) => {
         setEmail(e.target.value);
@@ -24,7 +26,7 @@ const Login = () => {
         e.preventDefault();
 
         try {
-            const response = await fetch('/login', {
+            const response = await fetch(API_ROUTES.login, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -35,7 +37,7 @@ const Login = () => {
             const data = await response.json();
 
             if (data.auth) {
-                // Successful login logic (e.g., redirect or set user state)
+                nav('/')
                 console.log('Login successful:', data);
             } else {
                 // Handle login failure (e.g., show error message)
