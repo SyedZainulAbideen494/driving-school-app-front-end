@@ -44,6 +44,7 @@
     position: fixed;
     bottom: 0;
     left: 50%;
+    opacity: 80%;
     transform: translateX(-50%);
     width: calc(100% - 20px); /* Full width minus left and right margin */
     max-width: 800px; /* Limit maximum width */
@@ -90,75 +91,85 @@
 /* home.css */
 
 .middle-content {
-    margin-top: 20px;
-    display: flex;
-    margin-left: 20px;
-    margin-right: 20px;
-    flex-direction: column;
-    align-items: center;
-    color: #fff; /* Text color for dark theme */
-    background-color: #121212; /* Dark background color */
-}
-
-.filter-btn {
-    margin-bottom: 10px;
+    padding: 20px;
 }
 
 .section {
-    width: 100%;
-    max-width: 800px;
-    margin-bottom: 20px;
-    padding: 10px;
-    background-color: #181818; /* Darker background color for sections */
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
 }
 
-.section h2 {
-    margin-bottom: 10px;
-    color: #fff; /* Heading text color */
+/* Container for each section with max width */
+.section-container {
+    max-width: 1200px; /* Adjust maximum width as needed */
+    margin: 0 auto; /* Center align container */
 }
 
-.school-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-}
-
-.school-card {
+/* Flexbox styling for various lists */
+.school-list,
+.promotion-list {
     display: flex;
-    flex-direction: column;
+    overflow-x: auto; /* Horizontal scroll for overflow */
+    padding-bottom: 10px; /* Space below lists */
+}
+
+/* Styling for cards */
+.school-card {
+    flex: 0 0 auto; /* Prevents items from growing */
+    margin-right: 20px; /* Space between cards */
+    border: 1px solid #ccc;
+    padding: 15px; /* Reduced padding for compact design */
     border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    background-color: #151515; /* Card background color */
+    margin-top: 10px;
+    width: 250px; /* Smaller width for cards */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Adding a subtle shadow */
 }
 
-.school-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+.promotion-card {
+    margin: 0 auto; /* Space between cards */
+    padding: 15px; /* Reduced padding for compact design */
+    border-radius: 10px;
+    width: 82%; /* Smaller width for cards */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Adding a subtle shadow */
 }
 
-.school-image {
+.school-card-sponsored {
+    margin: 0 auto; /* Space between cards */
+    padding: 15px; /* Reduced padding for compact design */
+    border-radius: 10px;
+    width: 82%; /* Smaller width for cards */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Adding a subtle shadow */
+}
+
+/* Image styling */
+.school-image,
+.promotion-image {
     width: 100%;
     height: 150px;
     object-fit: cover;
+    border-radius: 10px 10px 0 0; /* Rounded corners only at the top */
 }
 
+/* Details section styling */
 .school-details {
-    padding: 10px;
+    padding: 10px 0; /* Padding adjustment */
 }
 
-.school-details h3 {
-    margin-top: 0;
-    margin-bottom: 5px;
-    font-size: 16px;
-    color: #fff; /* Title color */
+
+/* Button styling */
+.view-btn,
+.like-btn {
+    padding: 8px 16px; /* Adjusted padding for buttons */
+    margin-top: 10px; /* Spacing above buttons */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #4CAF50; /* Button background color */
+    color: white; /* Button text color */
+    transition: background-color 0.3s ease; /* Smooth background transition */
 }
 
-.school-details p {
-    margin: 0;
-    color: #ccc; /* Text color */
-    font-size: 14px;
+.view-btn:hover,
+.like-btn:hover {
+    background-color: #45a049; /* Darker background on hover */
 }
+
