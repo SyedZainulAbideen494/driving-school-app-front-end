@@ -1,5 +1,4 @@
-/* home.css */
-
+/* Header styling */
 .header {
     background-color: #181818;
     color: #fff;
@@ -12,6 +11,7 @@
     margin: 10px;
 }
 
+/* Profile section */
 .profile {
     display: flex;
     align-items: center;
@@ -26,47 +26,37 @@
 
 .search-bar {
     padding: 10px;
-    border: 1px solid #121212;
+    border: none;
     border-radius: 15px;
     width: 200px;
     font-size: 14px;
-    background-color: #121212;
-    outline: none; /* Remove outline on focus */
-    margin-left: 10px; /* Adjust spacing */
+    background-color: #212121; /* Slightly lighter than background */
+    color: #fff;
+    outline: none;
+    margin-left: 10px;
 }
 
 .search-bar::placeholder {
-    color: #ccc; /* Placeholder color */
+    color: #ccc;
 }
 
-
+/* Footer styling */
 .footer {
     position: fixed;
     bottom: 0;
-    left: 50%;
-    opacity: 80%;
-    transform: translateX(-50%);
-    width: calc(100% - 20px); /* Full width minus left and right margin */
-    max-width: 800px; /* Limit maximum width */
+    left: 0;
+    width: 80%;
     background-color: #181818;
     color: #fff;
     display: flex;
     justify-content: space-around;
-    align-items: center; /* Center align items vertically */
-    padding: 10px 20px; /* Increased padding */
+    align-items: center;
+    padding: 10px 20px;
     box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
-    border-radius: 25px; /* Rounded corners */
+    border-radius: 25px;
     margin-left: 10px;
     margin-right: 10px;
-}
-
-@media (max-width: 600px) {
-    .footer {
-        width: calc(80% - 20px); /* Full width minus left and right margin */
-        margin-left: 5px;
-        margin-right: 5px;
-        margin-bottom: 10px;
-    }
+    opacity: 80%;
 }
 
 .footer-btn {
@@ -74,21 +64,14 @@
     color: #fff;
     border: none;
     cursor: pointer;
-    font-size: 16px;
-    padding: 10px 20px; /* Increased button padding */
-    transition: all 0.3s ease; /* Smooth transition */
+    font-size: 20px;
 }
 
 .footer-btn:hover {
     text-decoration: underline;
-    background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent background on hover */
-    border-radius: 5px; /* Rounded corners on hover */
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
 }
-
-
-
-
-/* home.css */
 
 .middle-content {
     padding: 20px;
@@ -98,78 +81,49 @@
     margin-bottom: 40px;
 }
 
-/* Container for each section with max width */
 .section-container {
-    max-width: 1200px; /* Adjust maximum width as needed */
-    margin: 0 auto; /* Center align container */
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-/* Flexbox styling for various lists */
-.school-list,
-.promotion-list {
-    display: flex;
-    overflow-x: auto; /* Horizontal scroll for overflow */
-    padding-bottom: 10px; /* Space below lists */
-}
-
-/* Styling for cards */
-.school-card {
-    flex: 0 0 auto; /* Prevents items from growing */
-    margin-right: 20px; /* Space between cards */
-    border: 1px solid #ccc;
-    padding: 15px; /* Reduced padding for compact design */
-    border-radius: 10px;
-    margin-top: 10px;
-    width: 250px; /* Smaller width for cards */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Adding a subtle shadow */
-}
-
-.promotion-card {
-    margin: 0 auto; /* Space between cards */
-    padding: 15px; /* Reduced padding for compact design */
-    border-radius: 10px;
-    width: 82%; /* Smaller width for cards */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Adding a subtle shadow */
-}
-
+/* Cards and lists */
+.school-card,
+.promotion-card,
 .school-card-sponsored {
-    margin: 0 auto; /* Space between cards */
-    padding: 15px; /* Reduced padding for compact design */
+    background-color: #212121;
+    color: #fff;
+    margin-bottom: 20px;
+    padding: 15px;
     border-radius: 10px;
-    width: 82%; /* Smaller width for cards */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Adding a subtle shadow */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Image styling */
 .school-image,
 .promotion-image {
     width: 100%;
     height: 150px;
     object-fit: cover;
-    border-radius: 10px 10px 0 0; /* Rounded corners only at the top */
+    border-radius: 10px 10px 0 0;
 }
 
-/* Details section styling */
 .school-details {
-    padding: 10px 0; /* Padding adjustment */
+    padding: 10px 0;
 }
 
-
-/* Button styling */
+/* Buttons */
 .view-btn,
 .like-btn {
-    padding: 8px 16px; /* Adjusted padding for buttons */
-    margin-top: 10px; /* Spacing above buttons */
+    padding: 8px 16px;
+    margin-top: 10px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    background-color: #4CAF50; /* Button background color */
-    color: white; /* Button text color */
-    transition: background-color 0.3s ease; /* Smooth background transition */
+    background-color: #9c27b0; /* Purple color */
+    color: #fff;
+    transition: background-color 0.3s ease;
 }
 
 .view-btn:hover,
 .like-btn:hover {
-    background-color: #45a049; /* Darker background on hover */
+    background-color: #7b1fa2; /* Darker purple on hover */
 }
-
