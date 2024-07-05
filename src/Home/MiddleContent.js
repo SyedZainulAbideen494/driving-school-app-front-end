@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './home.css';
+import { API_ROUTES } from '../app_modules/apiRoutes';
 
 const MiddleContent = () => {
     const [drivingSchools, setDrivingSchools] = useState([]);
@@ -33,7 +34,7 @@ const MiddleContent = () => {
                 <div className="school-list">
                     {drivingSchools.map(school => (
                         <div key={school.id} className="school-card">
-                            <img src={`http://localhost:8080/${school.logo_url}`} alt={school.name} className="school-image" />
+                            <img src={`${API_ROUTES.displayImg}/${school.logo_url}`} alt={school.name} className="school-image" />
                             <div className="school-details">
                                 <h3>{school.name}</h3>
                                 <p>Rating: {school.rating}</p>
@@ -49,7 +50,7 @@ const MiddleContent = () => {
                 <div className="school-list">
                     {drivingSchools.map(school => (
                         <div key={school.id} className="school-card">
-                            <img src={`http://localhost:8080/${school.logo_url}`} alt={school.name} className="school-image" />
+                            <img src={`${API_ROUTES.displayImg}/${school.logo_url}`} alt={school.name} className="school-image" />
                             <div className="school-details">
                                 <h3>{school.name}</h3>
                                 <p>Rating: {school.rating}</p>
@@ -65,7 +66,7 @@ const MiddleContent = () => {
                 <div className="school-list">
                     {drivingSchools.map(school => (
                         <div key={school.id} className="school-card">
-                            <img src={`http://localhost:8080/${school.logo_url}`} alt={school.name} className="school-image" />
+                            <img src={`${API_ROUTES.displayImg}/${school.logo_url}`} alt={school.name} className="school-image" />
                             <div className="school-details">
                                 <h3>{school.name}</h3>
                                 <p>Rating: {school.rating}</p>
