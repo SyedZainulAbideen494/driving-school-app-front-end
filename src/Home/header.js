@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './home.css'
+import { API_ROUTES } from '../app_modules/apiRoutes';
 
 const Header = () => {
     const [userName, setUserName] = useState('');
@@ -10,7 +11,7 @@ const Header = () => {
         const token = localStorage.getItem('token');
         if (token) {
             // Fetch user data from backend using token
-            axios.get(`http://localhost:8080/api/user/${token}`, {
+            axios.get(`${API_ROUTES.fetchUserDetails}/${token}`, {
             })
             .then(response => {
                 const { user_name, profile_pic } = response.data;
@@ -26,7 +27,7 @@ const Header = () => {
     return (
         <div className="header">
             <div className="profile">
-                <img src={`http://localhost:8080/${profilePic}`} alt="Profile" className="profile-pic" />
+                <img src={`${API_ROUTES.displayImg}/${profilePic}`} alt="Profile" className="profile-pic" />
                 <input type="text" placeholder="Search" className="search-bar" />
             </div>
         </div>
