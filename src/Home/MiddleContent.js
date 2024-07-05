@@ -10,7 +10,7 @@ const MiddleContent = () => {
         const token = localStorage.getItem('token');
 
         // Fetch all driving schools
-        axios.get('http://localhost:8080/api/driving-schools', {
+        axios.get(API_ROUTES.displayDrivingSchools, {
             params: {
                 token: token
             }
