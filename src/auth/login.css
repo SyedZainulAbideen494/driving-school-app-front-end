@@ -1,7 +1,7 @@
 .login-container {
     background: #181818;
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 25px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 300px;
     text-align: center;
@@ -31,7 +31,7 @@
     width: 100%;
     padding: 10px 10px 10px 40px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 15px;
     font-size: 16px;
 }
 
