@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 import { FaEnvelope, FaLock } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import './login.css';
+import Axios from 'axios';
 import { API_ROUTES } from '../app_modules/apiRoutes';
 
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [passwordVisible, setPasswordVisible] = useState(false);
+    const [error, setError] = useState("");
     const nav = useNavigate()
 
     const handleEmailChange = (e) => {
@@ -22,30 +24,28 @@ const Login = () => {
         setPasswordVisible(!passwordVisible);
     };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+    const navigate = useNavigate();
 
-        try {
-            const response = await fetch(API_ROUTES.login, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ email, password }),
-            });
-
-            const data = await response.json();
-
-            if (data.auth) {
-                nav('/')
-                console.log('Login successful:', data);
-            } else {
-                // Handle login failure (e.g., show error message)
-                console.log('Login failed:', data.message);
-            }
-        } catch (error) {
-            console.error('Error during login:', error);
+    const handleSubmit = (event) => {
+      event.preventDefault();
+      login();
+    };
+  
+    const login = () => {
+      setError(""); // Clear any previous errors
+      Axios.post(API_ROUTES.login, {
+        email: email,
+        password: password,
+      }).then((response) => {
+        if (!response.data.auth) {
+          setError(response.data.message || "An error occurred"); // Display the error message from the server, or a generic error message
+        } else {
+          navigate("/");
+          localStorage.setItem("token", response.data.token);
         }
+      }).catch((error) => {
+        setError("An error occurred while logging in"); // Display generic error message for network or other errors
+      });
     };
 
     return (

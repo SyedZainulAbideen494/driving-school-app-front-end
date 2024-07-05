@@ -1,0 +1,85 @@
+/* home.css */
+
+.header {
+    background-color: #181818;
+    color: #fff;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 25px;
+    margin: 10px;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+}
+
+.profile-pic {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+
+.search-bar {
+    padding: 10px;
+    border: 1px solid #121212;
+    border-radius: 15px;
+    width: 200px;
+    font-size: 14px;
+    background-color: #121212;
+    outline: none; /* Remove outline on focus */
+    margin-left: 10px; /* Adjust spacing */
+}
+
+.search-bar::placeholder {
+    color: #ccc; /* Placeholder color */
+}
+
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 20px); /* Full width minus left and right margin */
+    max-width: 800px; /* Limit maximum width */
+    background-color: #181818;
+    color: #fff;
+    display: flex;
+    justify-content: space-around;
+    align-items: center; /* Center align items vertically */
+    padding: 10px 20px; /* Increased padding */
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 25px; /* Rounded corners */
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+@media (max-width: 600px) {
+    .footer {
+        width: calc(80% - 20px); /* Full width minus left and right margin */
+        margin-left: 5px;
+        margin-right: 5px;
+        margin-bottom: 10px;
+    }
+}
+
+.footer-btn {
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 10px 20px; /* Increased button padding */
+    transition: all 0.3s ease; /* Smooth transition */
+}
+
+.footer-btn:hover {
+    text-decoration: underline;
+    background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent background on hover */
+    border-radius: 5px; /* Rounded corners on hover */
+}

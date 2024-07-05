@@ -6,39 +6,6 @@ body {
   padding: 0;
 }
 
-header {
-  background-color: #181818;
-  padding: 20px;
-  border-bottom: 2px solid #7161ef;
-  width: 100%;
-}
-
-a {
-  color: #7161ef;
-  text-decoration: none;
-}
-
-button {
-  background-color: #7161ef;
-  color: #ffffff;
-  border: none;
-  padding: 10px 20px;
-  margin: 10px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-button:hover {
-  background-color: #a38dff;
-}
-
-input, textarea {
-  background-color: #181818;
-  color: white;
-  border: 1px solid #7161ef;
-  padding: 10px;
-  margin: 10px 0;
-}
 
 h1, h2, h3, h4, h5, h6 {
   color: white;
