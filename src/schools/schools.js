@@ -9,6 +9,8 @@ const Schools = () => {
     const [schoolDetails, setSchoolDetails] = useState(null);
     const [recordedClasses, setRecordedClasses] = useState([]);
     const [courses, setCourses] = useState([]);
+    const [showAppointmentForm, setShowAppointmentForm] = useState(false); // State for showing/hiding the form
+    const [appointmentDetails, setAppointmentDetails] = useState({ name: '', phone: '', timeSlot: '' }); // State for form input
     const params = useParams();
     const nav = useNavigate();
     const schoolId = params.id; // Replace with the school ID you want to fetch
@@ -49,6 +51,25 @@ const Schools = () => {
 
     const handleBackclick = () => {
         nav('/');
+    };
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setAppointmentDetails(prevState => ({
+            ...prevState,
+            [name]: value
+        }));
+    };
+
+    const handleFormSubmit = (e) => {
+        e.preventDefault();
+        // Logic for form submission, e.g., send data to the server
+        console.log('Appointment Details:', appointmentDetails);
+        setShowAppointmentForm(false); // Hide form after submission
+    };
+
+    const handleCancel = () => {
+        setShowAppointmentForm(false); // Hide form on cancel
     };
 
     if (!schoolDetails) {
@@ -153,23 +174,23 @@ const Schools = () => {
                 
                 {/* Course Pricing and Driving Courses */}
                 <div className="detail-section-course">
-    <div className="section-title-course">
-        <span>Course Pricing</span>
-    </div>
-    <div className="detail-content-course courses-container">
-        {courses.map((course, index) => (
-            <div key={index} className="course-card">
-                <img src={`${API_ROUTES.displayImg}/${course.image}`} alt={course.course_name} className="course-image" />
-                <div className="course-details">
-                    <h3>{course.course_name}</h3>
-                    <p>{course.description}</p>
-                    <p>Price: ${course.price}</p>
-                    {/* Add more course details as needed */}
+                    <div className="section-title-course">
+                        <span>Course Pricing</span>
+                    </div>
+                    <div className="detail-content-course courses-container">
+                        {courses.map((course, index) => (
+                            <div key={index} className="course-card">
+                                <img src={`${API_ROUTES.displayImg}/${course.image}`} alt={course.course_name} className="course-image" />
+                                <div className="course-details">
+                                    <h3>{course.course_name}</h3>
+                                    <p>{course.description}</p>
+                                    <p>Price: ${course.price}</p>
+                                    {/* Add more course details as needed */}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
                 </div>
-            </div>
-        ))}
-    </div>
-</div>
                 
                 {/* Slots Availability */}
                 <div className="detail-section">
@@ -184,7 +205,49 @@ const Schools = () => {
             
             {/* Footer */}
             <div className="footer-schools">
-                <button className="book-appointment-btn">Book Appointment</button>
+                <button className="book-appointment-btn" onClick={() => setShowAppointmentForm(true)}>Book an Appointment</button>
+            </div>
+            
+            {/* Backdrop */}
+            <div className={`backdrop ${showAppointmentForm ? 'show' : ''}`} onClick={handleCancel}></div>
+
+            {/* Appointment Form Modal */}
+            <div className={`appointment-modal ${showAppointmentForm ? 'show' : ''}`}>
+                <form className="appointment-form" onSubmit={handleFormSubmit}>
+                    <h3>Book an Appointment</h3>
+                    <input
+                        type="text"
+                        name="name"
+                        placeholder="Name"
+                        value={appointmentDetails.name}
+                        onChange={handleInputChange}
+                    />
+                    <input
+                        type="text"
+                        name="phone"
+                        placeholder="Phone"
+                        value={appointmentDetails.phone}
+                        onChange={handleInputChange}
+                    />
+                    <input
+                        type="date"
+                        name="timeSlot"
+                        placeholder="Preferred Time Slot"
+                        value={appointmentDetails.dateSlot}
+                        onChange={handleInputChange}
+                    />
+                    <input
+                        type="time"
+                        name="timeSlot"
+                        placeholder="Preferred Time Slot"
+                        value={appointmentDetails.timeSlot}
+                        onChange={handleInputChange}
+                    />
+                    <div className="form-buttons">
+                        <button type="submit" className="confirm-btn">Confirm</button>
+                        <button type="button" className="cancel-btn" onClick={handleCancel}>Cancel</button>
+                    </div>
+                </form>
             </div>
         </div>
     );
