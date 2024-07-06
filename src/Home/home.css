@@ -130,12 +130,12 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center; /* Center items horizontally */
-    padding: 20px;
+    padding: 7px;
   }
   
   /* Individual category boxes */
   .category-box {
-    width: 120px; /* Set a fixed width for better alignment */
+    width: 100px; /* Set a fixed width for better alignment */
     margin: 10px; /* Adjust margin for spacing between boxes */
     border-radius: 15px;
     padding: 15px;
