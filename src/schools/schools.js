@@ -3,10 +3,12 @@ import axios from 'axios';
 import { FaArrowLeft, FaStar, FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaWhatsapp, FaLink } from 'react-icons/fa';
 import './schools.css'; // Import CSS for styling (create this file)
 import { API_ROUTES } from '../app_modules/apiRoutes';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+
 const Schools = () => {
     const [schoolDetails, setSchoolDetails] = useState(null);
-    const params = useParams()
+    const params = useParams();
+    const nav = useNavigate()
     const schoolId = params.id; // Replace with the school ID you want to fetch
 
     useEffect(() => {
@@ -28,15 +30,19 @@ const Schools = () => {
         return <div className="loading">Loading...</div>;
     }
 
+    const handleBackclick = () => {
+        nav('/')
+    }
+
     return (
         <div className="school-details">
             {/* Header */}
             <div className="header">
-                <div className="back-btn">
+                <div className="back-btn" onClick={handleBackclick}>
                     <FaArrowLeft />
                 </div>
                 <div className="school-title">
-                    <h4 style={{color: 'black'}}>{schoolDetails.name}</h4>
+                    <h4>{schoolDetails.name}</h4>
                     <div className="rating">
                         <FaStar /> {schoolDetails.rating}
                     </div>
@@ -51,47 +57,76 @@ const Schools = () => {
             {/* Details Container */}
             <div className="details-container">
                 {/* Location */}
-                <div className="location">
-                    <FaMapMarkerAlt /> {schoolDetails.address}, {schoolDetails.city}, {schoolDetails.state} {schoolDetails.zip_code}, {schoolDetails.country}
+                <div className="detail-section">
+                    <div className="section-title">
+                        <FaMapMarkerAlt />
+                        <span>Location</span>
+                    </div>
+                    <div className="detail-content">
+                        {schoolDetails.address}, {schoolDetails.city}, {schoolDetails.state} {schoolDetails.zip_code}, {schoolDetails.country}
+                    </div>
                 </div>
                 
                 {/* Contact */}
-                <div className="contact">
-                    <div className="contact-item">
-                        <FaPhoneAlt /> {schoolDetails.phone}
+                <div className="detail-section">
+                    <div className="section-title">
+                        <FaPhoneAlt />
+                        <span>Contact</span>
                     </div>
-                    <div className="contact-item">
-                        <FaEnvelope /> {schoolDetails.email}
-                    </div>
-                    <div className="contact-item" onClick={handleWhatsAppClick}>
-                        <FaWhatsapp /> Chat on WhatsApp
-                    </div>
-                    <div className="contact-item">
-                        <FaLink /> <a href={schoolDetails.website} target="_blank" rel="noopener noreferrer">Visit Website</a>
+                    <div className="detail-content">
+                        <div className="contact-item" onClick={handleWhatsAppClick}>
+                            <FaWhatsapp /> Chat on WhatsApp
+                        </div>
+                        <div className="contact-item">
+                            <FaPhoneAlt /> {schoolDetails.phone}
+                        </div>
+                        <div className="contact-item">
+                            <FaEnvelope /> {schoolDetails.email}
+                        </div>
+                        <div className="contact-item">
+                            <FaLink /> <a href={schoolDetails.website} target="_blank" rel="noopener noreferrer">Visit Website</a>
+                        </div>
                     </div>
                 </div>
                 
                 {/* Description */}
-                <div className="description">
-                    <strong>Description:</strong> {schoolDetails.description}
+                <div className="detail-section">
+                    <div className="section-title">
+                        <span>Description</span>
+                    </div>
+                    <div className="detail-content">
+                        {schoolDetails.description}
+                    </div>
                 </div>
                 
                 {/* Recorded Classes */}
-                <div className="recorded-classes">
-                    <h2>Recorded Classes</h2>
-                    {/* Render recorded classes */}
+                <div className="detail-section">
+                    <div className="section-title">
+                        <span>Recorded Classes</span>
+                    </div>
+                    <div className="detail-content">
+                        {/* Render recorded classes */}
+                    </div>
                 </div>
                 
                 {/* Course Pricing and Driving Courses */}
-                <div className="course-pricing">
-                    <h2>Course Pricing</h2>
-                    {/* Render course pricing */}
+                <div className="detail-section">
+                    <div className="section-title">
+                        <span>Course Pricing</span>
+                    </div>
+                    <div className="detail-content">
+                        {/* Render course pricing */}
+                    </div>
                 </div>
                 
                 {/* Slots Availability */}
-                <div className="slots-availability">
-                    <h2>Slots Availability</h2>
-                    {/* Render slots availability */}
+                <div className="detail-section">
+                    <div className="section-title">
+                        <span>Slots Availability</span>
+                    </div>
+                    <div className="detail-content">
+                        {/* Render slots availability */}
+                    </div>
                 </div>
             </div>
             

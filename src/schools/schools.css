@@ -1,13 +1,13 @@
-
-
 .header {
     background-color: #ffffff;
     padding: 10px;
     display: flex;
     align-items: center;
     position: sticky;
+    color: black;
     top: 0;
     z-index: 100;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .back-btn {
@@ -17,8 +17,8 @@
 
 .school-title {
     flex: 1;
+    margin-top: 10px;
 }
-
 
 .rating {
     display: flex;
@@ -45,13 +45,24 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.location, .contact, .description, .recorded-classes, .course-pricing, .slots-availability {
+.detail-section {
     margin-bottom: 20px;
 }
 
-.location svg, .contact svg {
+.section-title {
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.section-title svg {
     margin-right: 10px;
     vertical-align: middle;
+}
+
+.detail-content {
+    line-height: 1.5;
 }
 
 .contact-item {
@@ -75,6 +86,7 @@
     left: 0;
     width: 100%;
     background-color: #ffffff;
+    padding: 10px;
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
 }
 
@@ -86,9 +98,8 @@
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
-    text-align: right;
-}
-
-.book-appointment-btn:hover {
-    background-color: #219653; /* Button hover background color */
+    text-align: center; /* Center the text */
+    width: 50%; /* Set width to 50% of the container */
+    margin-left: auto; /* Auto margin left pushes the button to the right */
+    display: block; /* Ensures it's a block element */
 }
