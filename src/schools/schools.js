@@ -7,17 +7,28 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 const Schools = () => {
     const [schoolDetails, setSchoolDetails] = useState(null);
+    const [recordedClasses, setRecordedClasses] = useState([]);
     const params = useParams();
-    const nav = useNavigate()
+    const nav = useNavigate();
     const schoolId = params.id; // Replace with the school ID you want to fetch
 
     useEffect(() => {
+        // Fetch school details
         axios.get(`${API_ROUTES.schooldetailsId}/${schoolId}`)
             .then(response => {
                 setSchoolDetails(response.data);
             })
             .catch(error => {
-                console.error('Error fetching data:', error);
+                console.error('Error fetching school details:', error);
+            });
+
+        // Fetch recorded classes
+        axios.get(`${API_ROUTES.recordedClasses}/${schoolId}`)
+            .then(response => {
+                setRecordedClasses(response.data);
+            })
+            .catch(error => {
+                console.error('Error fetching recorded classes:', error);
             });
     }, [schoolId]);
 
@@ -26,12 +37,12 @@ const Schools = () => {
         window.open(`https://wa.me/${schoolDetails.phone}`, '_blank');
     };
 
+    const handleBackclick = () => {
+        nav('/');
+    };
+
     if (!schoolDetails) {
         return <div className="loading">Loading...</div>;
-    }
-
-    const handleBackclick = () => {
-        nav('/')
     }
 
     return (
@@ -105,7 +116,21 @@ const Schools = () => {
                         <span>Recorded Classes</span>
                     </div>
                     <div className="detail-content">
-                        {/* Render recorded classes */}
+                    {recordedClasses.map((recordedClass, index) => (
+                            <div key={index}>
+                                <p>{recordedClass.class_name}</p>
+                                <p>{recordedClass.description}</p>
+                                {/* Display video */}
+                                {recordedClass.video && (
+                                    <div className="video-container">
+                                        <video controls>
+                                            <source src={`${API_ROUTES.displayImg}/${recordedClass.video}`} type="video/mp4" />
+                                            Your browser does not support the video tag.
+                                        </video>
+                                    </div>
+                                )}
+                            </div>
+                        ))}
                     </div>
                 </div>
                 

@@ -103,3 +103,35 @@
     margin-left: auto; /* Auto margin left pushes the button to the right */
     display: block; /* Ensures it's a block element */
 }
+
+.video-container {
+    margin-top: 10px;
+}
+
+.video-container video {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.loading::after {
+    content: '...';
+    animation: dots 1s steps(5, end) infinite;
+}
+
+@keyframes dots {
+    0%, 20% {
+        color: rgba(0, 0, 0, 0);
+        text-shadow: .25em 0 0 rgba(0, 0, 0, 0), .5em 0 0 rgba(0, 0, 0, 0);
+    }
+    40% {
+        color: #333;
+        text-shadow: .25em 0 0 rgba(0, 0, 0, 0), .5em 0 0 rgba(0, 0, 0, 0);
+    }
+    60% {
+        text-shadow: .25em 0 0 #333, .5em 0 0 rgba(0, 0, 0, 0);
+    }
+    80%, 100% {
+        text-shadow: .25em 0 0 #333, .5em 0 0 #333;
+    }
+}

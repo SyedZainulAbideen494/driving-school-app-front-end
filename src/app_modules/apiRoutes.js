@@ -7,5 +7,6 @@ export const API_ROUTES = {
   fetchUserDetails: `${API_URL}/api/user`,
   displayDrivingSchools: `${API_URL}/api/driving-schools`,
   displayPromotions: `${API_URL}/api/promotions`,
-  schooldetailsId: `${API_URL}/school`
+  schooldetailsId: `${API_URL}/school`,
+  recordedClasses: `${API_URL}/recordedClasses`
 };
