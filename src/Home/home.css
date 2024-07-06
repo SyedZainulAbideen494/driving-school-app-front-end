@@ -79,7 +79,7 @@
 }
 
 .section {
-    margin-bottom: 40px;
+    margin-bottom: 100px;
 }
 
 .section-container {
@@ -94,7 +94,7 @@
     background-color: #fffdfd;
     margin-bottom: 20px;
     padding: 15px;
-    border-radius: 10px;
+    border-radius: 25px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
@@ -116,7 +116,8 @@
     padding: 8px 16px;
     margin-top: 10px;
     border: none;
-    border-radius: 5px;
+    width: 100%;
+    border-radius: 15px;
     cursor: pointer;
     background-color: #000000; /* Purple color */
     color: #fff;
@@ -224,3 +225,8 @@
   .discover-box button:hover {
     background-color: #585858; /* Darker green on hover */
   }
+
+
+
+
+  

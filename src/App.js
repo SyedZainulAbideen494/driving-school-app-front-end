@@ -10,12 +10,14 @@ import "./App.css";
 import Login from "./auth/login";
 import SignUp from "./auth/signup";
 import HomePage from "./Home/homePage";
+import MapComponent from "./map-home-ui/MapContainer";
 
 
 const router = createBrowserRouter([
   {path: '/login', element: <Login/>},
   {path: 'sign-up', element: <SignUp/>},
-  {path: '/', element: <HomePage/>}
+  {path: '/', element: <HomePage/>},
+  {path: '/map', element: <MapComponent/>}
 ]);
 
 

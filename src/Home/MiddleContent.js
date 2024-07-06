@@ -3,10 +3,9 @@ import axios from 'axios';
 import './home.css'; // Assuming you have your CSS file for home styles
 import { API_ROUTES } from '../app_modules/apiRoutes';
 import { FaHome, FaList, FaBell, FaCog } from 'react-icons/fa';
-import filterIcon from '../images/filter.png'
-import carCAtBn from '../images/car_catBanner.jpeg'
-import bikeCatBn from '../images/bike_catBanner.jpeg'
-
+import filterIcon from '../images/filter.png';
+import carCAtBn from '../images/car_catBanner.jpeg';
+import bikeCatBn from '../images/bike_catBanner.jpeg';
 
 const MiddleContent = () => {
     const [drivingSchools, setDrivingSchools] = useState([]);
@@ -21,8 +20,7 @@ const MiddleContent = () => {
         const token = localStorage.getItem('token');
         if (token) {
             // Fetch user data from backend using token
-            axios.get(`${API_ROUTES.fetchUserDetails}/${token}`, {
-            })
+            axios.get(`${API_ROUTES.fetchUserDetails}/${token}`, {})
             .then(response => {
                 const { user_name, profile_pic } = response.data;
                 setUserName(user_name);
@@ -94,6 +92,9 @@ const MiddleContent = () => {
                             <button className="view-btn">View</button>
                         </div>
                     </div>
+                    <div className="progress-bar">
+                        <div className="progress"></div>
+                    </div>
                 </div>
             </div>
         );
@@ -133,7 +134,6 @@ const MiddleContent = () => {
                                 <p>Rating: {school.rating}</p>
                                 <p>Address: {school.address}</p>
                                 <button className="view-btn">View</button>
-                                <button className="like-btn">❤️</button>
                             </div>
                         </div>
                     ))}
@@ -156,7 +156,6 @@ const MiddleContent = () => {
                                 <p>Rating: {school.rating}</p>
                                 <p>Address: {school.address}</p>
                                 <button className="view-btn">View</button>
-                                <button className="like-btn">❤️</button>
                             </div>
                         </div>
                     ))}
