@@ -7,9 +7,7 @@ import './home.css';
 const HomePage = () => {
     return (
         <div className="home-container">
-            <Header />
             <MiddleContent />
-            <Footer />
         </div>
     );
 };
