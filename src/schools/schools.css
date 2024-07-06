@@ -1,0 +1,94 @@
+
+
+.header {
+    background-color: #ffffff;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.back-btn {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.school-title {
+    flex: 1;
+}
+
+
+.rating {
+    display: flex;
+    align-items: center;
+    color: #f1c40f; /* Star color */
+}
+
+.banner {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.banner img {
+    width: 100%;
+    display: block;
+}
+
+.details-container {
+    background-color: #ffffff;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.location, .contact, .description, .recorded-classes, .course-pricing, .slots-availability {
+    margin-bottom: 20px;
+}
+
+.location svg, .contact svg {
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.contact-item {
+    margin-bottom: 10px;
+    cursor: pointer;
+    color: #3498db; /* Link color */
+}
+
+.contact-item svg {
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+.contact-item:hover {
+    text-decoration: underline;
+}
+
+.footer-schools {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.book-appointment-btn {
+    background-color: #000000; /* Button background color */
+    color: #ffffff; /* Button text color */
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: right;
+}
+
+.book-appointment-btn:hover {
+    background-color: #219653; /* Button hover background color */
+}

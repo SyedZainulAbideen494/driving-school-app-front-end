@@ -6,6 +6,7 @@ import { FaHome, FaList, FaBell, FaCog } from 'react-icons/fa';
 import filterIcon from '../images/filter.png';
 import carCAtBn from '../images/car_catBanner.jpeg';
 import bikeCatBn from '../images/bike_catBanner.jpeg';
+import { Link } from 'react-router-dom';
 
 const MiddleContent = () => {
     const [drivingSchools, setDrivingSchools] = useState([]);
@@ -133,7 +134,9 @@ const MiddleContent = () => {
                                 <h3>{school.name}</h3>
                                 <p>Rating: {school.rating}</p>
                                 <p>Address: {school.address}</p>
+                                <Link to={`/driving/school/${school.id}`}>
                                 <button className="view-btn">View</button>
+                                </Link>
                             </div>
                         </div>
                     ))}
@@ -155,7 +158,9 @@ const MiddleContent = () => {
                                 <h3>{school.name}</h3>
                                 <p>Rating: {school.rating}</p>
                                 <p>Address: {school.address}</p>
+                                <Link to={`/driving/school/${school.id}`}>
                                 <button className="view-btn">View</button>
+                                </Link>
                             </div>
                         </div>
                     ))}
