@@ -1,59 +1,95 @@
+/* Login container */
 .login-container {
-    background: #181818;
+    max-width: 400px; /* Adjust as needed */
+    margin: 0 auto;
     padding: 20px;
-    border-radius: 25px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .login-container h2 {
+    font-size: 2rem;
     text-align: center;
-    margin: 50px auto;
-}
-
-.login-container h2 {
     margin-bottom: 20px;
-    font-size: 24px;
-    color: #ffffff;
-}
-
-.input-container-login {
+    color: #333333;
+  }
+  
+  .login-container form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .error-message {
+    color: #ff6347; /* Tomato red */
+    margin-bottom: 10px;
+  }
+  
+  .input-container-login {
     display: flex;
     align-items: center;
     margin-bottom: 15px;
-    position: relative;
-}
-
-.input-container-login .icon {
-    position: absolute;
-    left: 10px;
-    color: #888;
-}
-
-.input-container-login input {
-    width: 100%;
-    padding: 10px 10px 10px 40px;
-    border: 1px solid #ccc;
-    border-radius: 15px;
-    font-size: 16px;
-}
-
-.input-container-login .toggle-password-login {
-    position: absolute;
-    right: 10px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+  }
+  
+  .input-container-login:last-child {
+    border-bottom: none;
+  }
+  
+  .icon {
+    margin-right: 10px;
+    font-size: 1.2rem;
+    color: #555555;
+  }
+  
+  .login-container input  {
+    flex: 1;
+    padding: 10px 40px;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+  }
+  
+  .toggle-password-login {
     cursor: pointer;
-    font-size: 14px;
-    color: #888;
-}
-
-.links-login {
-    margin-top: 15px;
-}
-
-.links-login  {
-    color: #4CAF50;
-    text-decoration: none;
-    margin: 0 10px;
-}
-
-.links-login:hover {
+    font-size: 0.9rem;
+    color: #007bff; /* Blue */
+  }
+  
+  .toggle-password-login:hover {
     text-decoration: underline;
-}
-
+    color: #0056b3; /* Darker blue on hover */
+  }
+  
+  .login-container button[type="submit"] {
+    background-color: #007bff; /* Blue */
+    color: #ffffff;
+    border: none;
+    padding: 12px 20px;
+    font-size: 1.1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .login-container button[type="submit"]:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+  }
+  
+  .links-login {
+    text-align: center;
+    margin-top: 15px;
+  }
+  
+  .links-login a {
+    color: #007bff; /* Blue */
+    text-decoration: none;
+  }
+  
+  .links-login a:hover {
+    text-decoration: underline;
+    color: #0056b3; /* Darker blue on hover */
+  }
