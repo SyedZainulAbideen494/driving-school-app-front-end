@@ -112,6 +112,7 @@ const MiddleContent = () => {
                 <div className="promotion-list">
                     <div key={currentPromotion.id} className="promotion-card">
                         <img src={`${API_ROUTES.displayImg}/${currentPromotion.banner_url}`} alt={currentPromotion.title} className="promotion-image" />
+                        <p>{currentPromotion.title}</p>
                     </div>
                 </div>
             </div>
