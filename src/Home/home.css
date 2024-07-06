@@ -70,29 +70,47 @@
     border-radius: 5px;
 }
 
+
+
+
 .middle-content {
     padding: 20px;
+    color: #fff;
+    background-color: #121212;
 }
 
 .section {
     margin-bottom: 40px;
 }
 
-.section-container {
-    max-width: 1200px;
-    margin: 0 auto;
+.section h4 {
+    margin-bottom: 20px;
+    color: #a38dff;
 }
 
-/* Cards and lists */
+.carousel {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+}
+
 .school-card,
 .promotion-card,
 .school-card-sponsored {
     background-color: #212121;
     color: #fff;
-    margin-bottom: 20px;
+    margin: 10px auto;
     padding: 15px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.school-card:hover,
+.promotion-card:hover,
+.school-card-sponsored:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
 }
 
 .school-image,
@@ -107,11 +125,15 @@
     padding: 10px 0;
 }
 
-/* Buttons */
+.school-details h3 {
+    margin: 10px 0;
+}
+
 .view-btn,
 .like-btn {
     padding: 8px 16px;
     margin-top: 10px;
+    margin-right: 5px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -124,3 +146,4 @@
 .like-btn:hover {
     background-color: #7b1fa2; /* Darker purple on hover */
 }
+
