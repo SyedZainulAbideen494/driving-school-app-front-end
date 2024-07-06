@@ -162,3 +162,61 @@
     margin: 0;
     color: #333333; /* Text color */
   }
+
+  /* Discover section container */
+.discover-section {
+    padding: 20px;
+  }
+  
+/* Individual discover boxes */
+.discover-box {
+    width: 250px; /* Adjust width as needed */
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    margin: 10px auto;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+  
+  .discover-box:hover {
+    transform: translateY(-5px); /* Lift box on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Increased shadow on hover */
+  }
+  
+  /* Specific background colors */
+  .discover-box:nth-child(1) {
+    background-color: #6D4AFE; /* First box background color */
+  }
+  
+  .discover-box:nth-child(2) {
+    background-color: #F075B4; /* Second box background color */
+  }
+  
+  .discover-box:nth-child(3) {
+    background-color: #FEE5A3; /* Third box background color */
+  }
+  
+  .discover-box h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #ffffff; /* Text color */
+  }
+  
+  .discover-box p {
+    color: #ffffff; /* Subdued text color */
+  }
+  
+  .discover-box button {
+    padding: 10px 20px;
+    background-color: #000000; /* Green button color */
+    color: #ffffff; /* Button text color */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .discover-box button:hover {
+    background-color: #585858; /* Darker green on hover */
+  }

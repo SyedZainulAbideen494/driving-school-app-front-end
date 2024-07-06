@@ -180,6 +180,23 @@ const MiddleContent = () => {
     <p>Bike Riding Schools</p>
   </div>
 </div>
+<div className='discover-section'>
+  <div className='discover-box'>
+    <h3>Discover New Features</h3>
+    <p>Explore the latest additions to our app.</p>
+    <button>Explore</button>
+  </div>
+  <div className='discover-box'>
+    <h3>Find Events Near You</h3>
+    <p>Discover local events and activities.</p>
+    <button>Find Events</button>
+  </div>
+  <div className='discover-box'>
+    <h3>Learn Something New</h3>
+    <p>Access tutorials and resources.</p>
+    <button>Start Learning</button>
+  </div>
+</div>
         <div className="middle-content">
             {renderSponsoredSchool()}
             {renderPromotionBanners()}
