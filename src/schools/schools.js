@@ -117,20 +117,22 @@ const Schools = () => {
                     </div>
                     <div className="detail-content">
                     {recordedClasses.map((recordedClass, index) => (
-                            <div key={index}>
-                                <p>{recordedClass.class_name}</p>
-                                <p>{recordedClass.description}</p>
-                                {/* Display video */}
-                                {recordedClass.video && (
-                                    <div className="video-container">
-                                        <video controls>
-                                            <source src={`${API_ROUTES.displayImg}/${recordedClass.video}`} type="video/mp4" />
-                                            Your browser does not support the video tag.
-                                        </video>
-                                    </div>
-                                )}
-                            </div>
-                        ))}
+    <div key={index} className="video-card">
+        {/* Video Container */}
+        <div className="video-container">
+            <video controls>
+                <source src={`${API_ROUTES.displayImg}/${recordedClass.video}`} type="video/mp4" />
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        
+        {/* Video Details */}
+        <div className="video-details">
+            <p className="video-title">{recordedClass.title}</p>
+            <p className="video-description">{recordedClass.description}</p>
+        </div>
+    </div>
+))}
                     </div>
                 </div>
                 

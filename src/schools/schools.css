@@ -104,14 +104,45 @@
     display: block; /* Ensures it's a block element */
 }
 
+.video-card {
+    align-items: center;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
 .video-container {
-    margin-top: 10px;
+    flex: 1;
+    overflow: hidden;
 }
 
 .video-container video {
     width: 100%;
-    border-radius: 8px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    display: block;
+}
+
+.video-details {
+    flex: 1;
+    padding: 15px;
+    background-color: #fff;
+}
+
+.video-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+    color: #333;
+}
+
+.video-description {
+    margin-top: 5px;
+    color: #666;
+}
+
+.video-details p {
+    margin: 0;
+    line-height: 1.4;
 }
 
 .loading::after {
