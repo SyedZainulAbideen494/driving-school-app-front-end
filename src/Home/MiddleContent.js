@@ -88,7 +88,7 @@ const MiddleContent = () => {
                         <div className="school-details">
                             <h3>{currentSponsor.name}</h3>
                             <p>{currentSponsor.location}</p>
-                            <p style={{color: '#333'}}>sponsored</p>
+                            <p style={{color: 'grey'}}>sponsored</p>
                             <button className="view-btn">View</button>
                         </div>
                     </div>
