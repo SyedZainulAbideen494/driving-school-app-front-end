@@ -131,6 +131,8 @@
     flex-wrap: wrap;
     justify-content: center; /* Center items horizontally */
     padding: 7px;
+    margin-top: 30px;
+    margin-bottom: 40px;
   }
   
   /* Individual category boxes */
