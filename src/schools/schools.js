@@ -10,7 +10,7 @@ const Schools = () => {
     const schoolId = params.id; // Replace with the school ID you want to fetch
 
     useEffect(() => {
-        axios.get(`http://localhost:8080/school/${schoolId}`)
+        axios.get(`${API_ROUTES.schooldetailsId}/${schoolId}`)
             .then(response => {
                 setSchoolDetails(response.data);
             })
