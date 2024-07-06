@@ -6,6 +6,8 @@ import { FaHome, FaList, FaBell, FaCog } from 'react-icons/fa';
 import filterIcon from '../images/filter.png'
 import carCAtBn from '../images/car_catBanner.jpeg'
 import bikeCatBn from '../images/bike_catBanner.jpeg'
+
+
 const MiddleContent = () => {
     const [drivingSchools, setDrivingSchools] = useState([]);
     const [promotions, setPromotions] = useState([]);
@@ -207,11 +209,11 @@ const MiddleContent = () => {
             </footer>
         </div>
         <div className="footer">
-            <button className="footer-btn"><FaHome /></button>
-            <button className="footer-btn"><FaList /></button>
-            <button className="footer-btn"><FaBell /></button>
-            <button className="footer-btn"><FaCog /></button>
-        </div>
+  <button className="footer-btn"><FaHome style={{ color: 'black' }} /></button>
+  <button className="footer-btn"><FaList style={{ color: 'black' }} /></button>
+  <button className="footer-btn"><FaBell style={{ color: 'black' }} /></button>
+  <button className="footer-btn"><FaCog style={{ color: 'black' }} /></button>
+</div>
         </Fragment>
     );
 };
