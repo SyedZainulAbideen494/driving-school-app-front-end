@@ -146,7 +146,7 @@ const MiddleContent = () => {
         console.log('All Driving Schools:', drivingSchools); // Log to check state before rendering
         return (
             <div className="section">
-                <h4>All Driving Schools</h4>
+                <h3>All Driving Schools</h3>
                 <div className="school-list-all-driving-schools">
                     {drivingSchools.map(school => (
                         <div key={school.id} className="school-card">
