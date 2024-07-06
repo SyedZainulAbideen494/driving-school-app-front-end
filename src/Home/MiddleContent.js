@@ -82,13 +82,13 @@ const MiddleContent = () => {
 
         return (
             <div className="section">
-                <h4>Sponsored School</h4>
                 <div className="school-list sponsored-list">
                     <div key={currentSponsor.id} className="school-card-sponsored">
                         <img src={`${API_ROUTES.displayImg}/${currentSponsor.logo_url}`} alt={currentSponsor.name} className="school-image" />
                         <div className="school-details">
                             <h3>{currentSponsor.name}</h3>
                             <p>{currentSponsor.location}</p>
+                            <p style={{color: '#333'}}>sponsored</p>
                             <button className="view-btn">View</button>
                         </div>
                     </div>
