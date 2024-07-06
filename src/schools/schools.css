@@ -46,7 +46,7 @@
 }
 
 .detail-section {
-    margin-bottom: 20px;
+    margin-bottom: 70px;
 }
 
 .section-title {
@@ -95,12 +95,13 @@
     color: #ffffff; /* Button text color */
     padding: 10px;
     border: none;
-    border-radius: 4px;
+    border-radius: 25px;
     cursor: pointer;
     font-size: 16px;
     text-align: center; /* Center the text */
     width: 50%; /* Set width to 50% of the container */
     margin-left: auto; /* Auto margin left pushes the button to the right */
+    margin-right: 10px;
     display: block; /* Ensures it's a block element */
 }
 

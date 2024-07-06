@@ -3,7 +3,7 @@ import axios from 'axios';
 import { FaArrowLeft, FaStar, FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaWhatsapp, FaLink } from 'react-icons/fa';
 import './schools.css'; // Import CSS for styling (create this file)
 import { API_ROUTES } from '../app_modules/apiRoutes';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, Link } from 'react-router-dom';
 
 const Schools = () => {
     const [schoolDetails, setSchoolDetails] = useState(null);
@@ -116,23 +116,28 @@ const Schools = () => {
                         <span>Recorded Classes</span>
                     </div>
                     <div className="detail-content">
-                    {recordedClasses.map((recordedClass, index) => (
-    <div key={index} className="video-card">
-        {/* Video Container */}
-        <div className="video-container">
-            <video controls>
-                <source src={`${API_ROUTES.displayImg}/${recordedClass.video}`} type="video/mp4" />
-                Your browser does not support the video tag.
-            </video>
-        </div>
-        
-        {/* Video Details */}
-        <div className="video-details">
-            <p className="video-title">{recordedClass.title}</p>
-            <p className="video-description">{recordedClass.description}</p>
-        </div>
-    </div>
-))}
+                        {recordedClasses.slice(0, 2).map((recordedClass, index) => (
+                            <div key={index} className="video-card">
+                                {/* Video Container */}
+                                <div className="video-container">
+                                    <video controls>
+                                        <source src={`${API_ROUTES.displayImg}/${recordedClass.video}`} type="video/mp4" />
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </div>
+                                
+                                {/* Video Details */}
+                                <div className="video-details">
+                                    <p className="video-title">{recordedClass.title}</p>
+                                    <p className="video-description">{recordedClass.description}</p>
+                                </div>
+                            </div>
+                        ))}
+                        
+                        {/* See All Classes Button */}
+                        <div className="see-all-classes">
+                            <Link to={`/recorded/classes/${schoolId}`} className="see-all-btn">See All Classes</Link>
+                        </div>
                     </div>
                 </div>
                 
