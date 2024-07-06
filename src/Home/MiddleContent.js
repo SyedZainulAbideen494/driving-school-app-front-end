@@ -90,7 +90,9 @@ const MiddleContent = () => {
                             <h3>{currentSponsor.name}</h3>
                             <p>{currentSponsor.location}</p>
                             <p style={{color: 'grey'}}>sponsored</p>
-                            <button className="view-btn">View</button>
+                            <Link to={`/driving/school/${currentSponsor.id}`}>
+                                <button className="view-btn">View</button>
+                                </Link>
                         </div>
                     </div>
                     <div className="progress-bar">
