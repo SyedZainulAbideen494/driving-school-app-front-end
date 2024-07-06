@@ -167,3 +167,41 @@
         text-shadow: .25em 0 0 #333, .5em 0 0 #333;
     }
 }
+
+
+.detail-content-course {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 20px;
+}
+
+.courses-container {
+    display: flex;
+}
+
+.course-card {
+    flex: 0 0 auto;
+    margin-right: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 250px; /* Adjust as needed */
+    display: inline-block;
+}
+
+.course-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.course-details {
+    text-align: left;
+}
+
+.section-title-course {
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}

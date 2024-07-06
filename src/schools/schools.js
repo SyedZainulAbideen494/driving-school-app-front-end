@@ -8,6 +8,7 @@ import { useNavigate, useParams, Link } from 'react-router-dom';
 const Schools = () => {
     const [schoolDetails, setSchoolDetails] = useState(null);
     const [recordedClasses, setRecordedClasses] = useState([]);
+    const [courses, setCourses] = useState([]);
     const params = useParams();
     const nav = useNavigate();
     const schoolId = params.id; // Replace with the school ID you want to fetch
@@ -29,6 +30,15 @@ const Schools = () => {
             })
             .catch(error => {
                 console.error('Error fetching recorded classes:', error);
+            });
+
+        // Fetch courses by school ID
+        axios.get(`${API_ROUTES.coursesBySchool}/${schoolId}`)
+            .then(response => {
+                setCourses(response.data);
+            })
+            .catch(error => {
+                console.error('Error fetching courses:', error);
             });
     }, [schoolId]);
 
@@ -142,14 +152,24 @@ const Schools = () => {
                 </div>
                 
                 {/* Course Pricing and Driving Courses */}
-                <div className="detail-section">
-                    <div className="section-title">
-                        <span>Course Pricing</span>
-                    </div>
-                    <div className="detail-content">
-                        {/* Render course pricing */}
-                    </div>
+                <div className="detail-section-course">
+    <div className="section-title-course">
+        <span>Course Pricing</span>
+    </div>
+    <div className="detail-content-course courses-container">
+        {courses.map((course, index) => (
+            <div key={index} className="course-card">
+                <img src={`${API_ROUTES.displayImg}/${course.image}`} alt={course.course_name} className="course-image" />
+                <div className="course-details">
+                    <h3>{course.course_name}</h3>
+                    <p>{course.description}</p>
+                    <p>Price: ${course.price}</p>
+                    {/* Add more course details as needed */}
                 </div>
+            </div>
+        ))}
+    </div>
+</div>
                 
                 {/* Slots Availability */}
                 <div className="detail-section">

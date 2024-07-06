@@ -8,5 +8,6 @@ export const API_ROUTES = {
   displayDrivingSchools: `${API_URL}/api/driving-schools`,
   displayPromotions: `${API_URL}/api/promotions`,
   schooldetailsId: `${API_URL}/school`,
-  recordedClasses: `${API_URL}/recordedClasses`
+  recordedClasses: `${API_URL}/recordedClasses`,
+  coursesBySchool: `${API_URL}/courses`
 };
