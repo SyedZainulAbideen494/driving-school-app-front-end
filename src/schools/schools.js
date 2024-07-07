@@ -10,7 +10,10 @@ const Schools = () => {
     const [recordedClasses, setRecordedClasses] = useState([]);
     const [courses, setCourses] = useState([]);
     const [showAppointmentForm, setShowAppointmentForm] = useState(false); // State for showing/hiding the form
-    const [appointmentDetails, setAppointmentDetails] = useState({ name: '', phone: '', timeSlot: '' }); // State for form input
+    const [appointmentDetails, setAppointmentDetails] = useState({ name: '', phone: '', timeSlot: '', dateSlot: '' }); // State for form input
+    const [submitting, setSubmitting] = useState(false); // State for form submission status
+    const [bookingSuccess, setBookingSuccess] = useState(false); // State for booking success
+
     const params = useParams();
     const nav = useNavigate();
     const schoolId = params.id; // Replace with the school ID you want to fetch
@@ -63,9 +66,37 @@ const Schools = () => {
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
-        // Logic for form submission, e.g., send data to the server
-        console.log('Appointment Details:', appointmentDetails);
-        setShowAppointmentForm(false); // Hide form after submission
+
+        // Set submitting state to true
+        setSubmitting(true);
+
+        // Get the token from localStorage or wherever it's stored
+        const token = localStorage.getItem('token'); // Adjust this based on your actual implementation
+
+        const appointmentData = {
+            name: appointmentDetails.name,
+            phone: appointmentDetails.phone,
+            timeSlot: appointmentDetails.timeSlot,
+            dateSlot: appointmentDetails.dateSlot,
+            school_id: schoolId,
+            token: token // Send the token to the backend
+        };
+
+        // Make a POST request to your backend
+        axios.post('http://localhost:8080/api/appointments', appointmentData)
+            .then(response => {
+                console.log('Appointment booked successfully:', response.data);
+                setBookingSuccess(true); // Set booking success state to true
+                // Reset form fields
+                setAppointmentDetails({ name: '', phone: '', timeSlot: '', dateSlot: '' });
+            })
+            .catch(error => {
+                console.error('Error booking appointment:', error);
+            })
+            .finally(() => {
+                // Always set submitting state to false after submission (whether success or failure)
+                setSubmitting(false);
+            });
     };
 
     const handleCancel = () => {
@@ -90,12 +121,12 @@ const Schools = () => {
                     </div>
                 </div>
             </div>
-            
+
             {/* Banner */}
             <div className="banner">
                 <img src={`${API_ROUTES.displayImg}/${schoolDetails.logo_url}`} alt={`${schoolDetails.name} Logo`} />
             </div>
-            
+
             {/* Details Container */}
             <div className="details-container">
                 {/* Location */}
@@ -108,7 +139,7 @@ const Schools = () => {
                         {schoolDetails.address}, {schoolDetails.city}, {schoolDetails.state} {schoolDetails.zip_code}, {schoolDetails.country}
                     </div>
                 </div>
-                
+
                 {/* Contact */}
                 <div className="detail-section">
                     <div className="section-title">
@@ -130,7 +161,7 @@ const Schools = () => {
                         </div>
                     </div>
                 </div>
-                
+
                 {/* Description */}
                 <div className="detail-section">
                     <div className="section-title">
@@ -140,7 +171,7 @@ const Schools = () => {
                         {schoolDetails.description}
                     </div>
                 </div>
-                
+
                 {/* Recorded Classes */}
                 <div className="detail-section">
                     <div className="section-title">
@@ -156,7 +187,7 @@ const Schools = () => {
                                         Your browser does not support the video tag.
                                     </video>
                                 </div>
-                                
+
                                 {/* Video Details */}
                                 <div className="video-details">
                                     <p className="video-title">{recordedClass.title}</p>
@@ -164,14 +195,14 @@ const Schools = () => {
                                 </div>
                             </div>
                         ))}
-                        
+
                         {/* See All Classes Button */}
                         <div className="see-all-classes">
                             <Link to={`/recorded/classes/${schoolId}`} className="see-all-btn">See All Classes</Link>
                         </div>
                     </div>
                 </div>
-                
+
                 {/* Course Pricing and Driving Courses */}
                 <div className="detail-section-course">
                     <div className="section-title-course">
@@ -191,7 +222,7 @@ const Schools = () => {
                         ))}
                     </div>
                 </div>
-                
+
                 {/* Slots Availability */}
                 <div className="detail-section">
                     <div className="section-title">
@@ -202,52 +233,71 @@ const Schools = () => {
                     </div>
                 </div>
             </div>
-            
+
             {/* Footer */}
             <div className="footer-schools">
                 <button className="book-appointment-btn" onClick={() => setShowAppointmentForm(true)}>Book an Appointment</button>
             </div>
-            
+
             {/* Backdrop */}
             <div className={`backdrop ${showAppointmentForm ? 'show' : ''}`} onClick={handleCancel}></div>
 
             {/* Appointment Form Modal */}
             <div className={`appointment-modal ${showAppointmentForm ? 'show' : ''}`}>
-                <form className="appointment-form" onSubmit={handleFormSubmit}>
-                    <h3>Book an Appointment</h3>
-                    <input
-                        type="text"
-                        name="name"
-                        placeholder="Name"
-                        value={appointmentDetails.name}
-                        onChange={handleInputChange}
-                    />
-                    <input
-                        type="text"
-                        name="phone"
-                        placeholder="Phone"
-                        value={appointmentDetails.phone}
-                        onChange={handleInputChange}
-                    />
-                    <input
-                        type="date"
-                        name="timeSlot"
-                        placeholder="Preferred Time Slot"
-                        value={appointmentDetails.dateSlot}
-                        onChange={handleInputChange}
-                    />
-                    <input
-                        type="time"
-                        name="timeSlot"
-                        placeholder="Preferred Time Slot"
-                        value={appointmentDetails.timeSlot}
-                        onChange={handleInputChange}
-                    />
-                    <div className="form-buttons">
-                        <button type="submit" className="confirm-btn">Confirm</button>
-                        <button type="button" className="cancel-btn" onClick={handleCancel}>Cancel</button>
+                {submitting && (
+                    <div className="loading-overlay">
+                        <div className="spinner-border text-primary" role="status">
+                            <span className="sr-only">Loading...</span>
+                        </div>
                     </div>
-                </form>
+                )}
+                {!submitting && !bookingSuccess && (
+                    <form className="appointment-form" onSubmit={handleFormSubmit}>
+                        <h3>Book an Appointment</h3>
+                        <input
+                            type="text"
+                            name="name"
+                            placeholder="Your Name"
+                            value={appointmentDetails.name}
+                            onChange={handleInputChange}
+                            required
+                        />
+                        <input
+                            type="text"
+                            name="phone"
+                            placeholder="Your Phone Number"
+                            value={appointmentDetails.phone}
+                            onChange={handleInputChange}
+                            required
+                        />
+                        <input
+                            type="text"
+                            name="timeSlot"
+                            placeholder="Preferred Time Slot"
+                            value={appointmentDetails.timeSlot}
+                            onChange={handleInputChange}
+                            required
+                        />
+                        <input
+                            type="date"
+                            name="dateSlot"
+                            placeholder="Preferred Date Slot"
+                            value={appointmentDetails.dateSlot}
+                            onChange={handleInputChange}
+                            required
+                        />
+                        <button type="submit" className="confirm-btn" disabled={submitting}>
+                            {submitting ? 'Booking...' : 'Book Now'}
+                        </button>
+                        <button type="button" className="cancel-btn" onClick={handleCancel}>Cancel</button>
+                    </form>
+                )}
+                {bookingSuccess && (
+                    <div className="success-message">
+                        <p>Your appointment has been booked successfully!</p>
+                        <button className="done-btn" onClick={() => setShowAppointmentForm(false)}>Done</button>
+                    </div>
+                )}
             </div>
         </div>
     );
