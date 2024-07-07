@@ -290,85 +290,90 @@
 
 /* schools.css */
 
-/* Loading Overlay Styles */
-.loading-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(255, 255, 255, 0.8);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-}
-
-.spinner-border {
-    width: 3rem;
-    height: 3rem;
-    border-width: 0.25em;
-}
-
-/* Success Message Styles */
 .success-message {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgba(255, 255, 255, 0.9);
-    padding: 20px;
     text-align: center;
+    padding: 20px;
+    background: #f3f4f6;
     border-radius: 8px;
-    z-index: 1000;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease-out;
 }
 
 .tick-animation {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    border: 4px solid #4CAF50;
-    border-top: 4px solid transparent;
-    animation: spin 1s linear forwards, tick 0.5s ease-in-out 1s forwards;
+    display: inline-block;
+    margin-bottom: 15px;
 }
 
-@keyframes spin {
+.circle {
+    width: 60px;
+    height: 60px;
+    border: 4px solid #4CAF50;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    animation: drawCircle 1s ease-out forwards;
+    box-shadow: 0 0 15px rgba(76, 175, 80, 0.5);
+}
+
+.tick {
+    width: 20px;
+    height: 10px;
+    border-left: 4px solid #4CAF50;
+    border-bottom: 4px solid #4CAF50;
+    position: absolute;
+    transform: rotate(-45deg) scale(0);
+    transform-origin: bottom left;
+    animation: drawTick 0.5s 1s ease-out forwards, glowTick 1s 1.5s ease-out forwards;
+}
+
+@keyframes drawCircle {
     0% {
-        transform: rotate(0deg);
+        stroke-dasharray: 0 100;
     }
     100% {
-        transform: rotate(360deg);
+        stroke-dasharray: 100 0;
     }
 }
 
-@keyframes tick {
+@keyframes drawTick {
     0% {
-        width: 0;
-        height: 0;
-        border-width: 25px;
+        transform: rotate(-45deg) scale(0);
+    }
+    100% {
+        transform: rotate(-45deg) scale(1);
+    }
+}
+
+@keyframes glowTick {
+    0% {
+        box-shadow: 0 0 0 rgba(76, 175, 80, 0);
+    }
+    100% {
+        box-shadow: 0 0 10px rgba(76, 175, 80, 0.8);
+    }
+}
+
+@keyframes fadeIn {
+    0% {
         opacity: 0;
     }
     100% {
-        width: 50px;
-        height: 50px;
-        border-width: 4px;
         opacity: 1;
     }
 }
 
-/* Optional: Button Styling */
 .done-btn {
-    margin-top: 10px;
-    padding: 10px 20px;
-    background-color: #000000;
+    background-color: #4CAF50;
     color: white;
     border: none;
-    border-radius: 4px;
+    padding: 10px 20px;
     cursor: pointer;
+    border-radius: 5px;
     transition: background-color 0.3s ease;
 }
 
 .done-btn:hover {
-    background-color: #000000;
+    background-color: #45a049;
 }

@@ -221,17 +221,7 @@ const Schools = () => {
                             </div>
                         ))}
                     </div>
-                </div>
-
-                {/* Slots Availability */}
-                <div className="detail-section">
-                    <div className="section-title">
-                        <span>Slots Availability</span>
-                    </div>
-                    <div className="detail-content">
-                        {/* Render slots availability */}
-                    </div>
-                </div>
+                </div>  
             </div>
 
             {/* Footer */}
@@ -271,7 +261,7 @@ const Schools = () => {
                             required
                         />
                         <input
-                            type="text"
+                            type="time"
                             name="timeSlot"
                             placeholder="Preferred Time Slot"
                             value={appointmentDetails.timeSlot}
@@ -293,11 +283,16 @@ const Schools = () => {
                     </form>
                 )}
                 {bookingSuccess && (
-                    <div className="success-message">
-                        <p>Your appointment has been booked successfully!</p>
-                        <button className="done-btn" onClick={() => setShowAppointmentForm(false)}>Done</button>
-                    </div>
-                )}
+    <div className="success-message">
+        <div className="tick-animation">
+            <div className="circle">
+                <div className="tick"></div>
+            </div>
+        </div>
+        <p>Your appointment has been booked successfully!</p>
+        <button className="done-btn" onClick={() => setShowAppointmentForm(false)}>Done</button>
+    </div>
+)}
             </div>
         </div>
     );

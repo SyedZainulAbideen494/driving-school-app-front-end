@@ -12,6 +12,7 @@ import SignUp from "./auth/signup";
 import HomePage from "./Home/homePage";
 import MapComponent from "./map-home-ui/MapContainer";
 import Schools from "./schools/schools";
+import DrivingSchoolForm from "./add schools/addSchool";
 
 
 const router = createBrowserRouter([
@@ -19,7 +20,8 @@ const router = createBrowserRouter([
   {path: 'sign-up', element: <SignUp/>},
   {path: '/', element: <HomePage/>},
   {path: '/map', element: <MapComponent/>},
-  {path: '/driving/school/:id', element: <Schools/>}
+  {path: '/driving/school/:id', element: <Schools/>},
+  {path: '/school/create', element: <DrivingSchoolForm/>}
 ]);
 
 
