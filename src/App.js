@@ -13,6 +13,7 @@ import HomePage from "./Home/homePage";
 import MapComponent from "./map-home-ui/MapContainer";
 import Schools from "./schools/schools";
 import DrivingSchoolForm from "./add schools/addSchool";
+import SchoolListAdmin from "./my-schools/my-schools-display";
 
 
 const router = createBrowserRouter([
@@ -23,6 +24,7 @@ const router = createBrowserRouter([
   {path: '/driving/school/:id', element: <Schools/>},
   {path: '/school/create', element: <DrivingSchoolForm/>},
   {path: '/register/school/form', element: <DrivingSchoolForm/>},
+  {path: '/my/schools', element: <SchoolListAdmin/>},
 ]);
 
 
