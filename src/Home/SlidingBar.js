@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { FaSchool, FaBell, FaSignOutAlt } from 'react-icons/fa';
 import './SlidingBar.css'; // Import the CSS for the sliding bar
 import { useNavigate } from 'react-router-dom';
+import { API_ROUTES } from '../app_modules/apiRoutes';
 
 const SlidingBar = ({ isOpen, onClose }) => {
     const [user, setUser] = useState(null);
@@ -18,7 +19,7 @@ const SlidingBar = ({ isOpen, onClose }) => {
     }, []);
 
     const fetchUserData = (token) => {
-        fetch('http://localhost:8080/api/user_data/school/btn', {
+        fetch(API_ROUTES.getMySchoolsBtn, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

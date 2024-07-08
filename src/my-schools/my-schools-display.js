@@ -18,7 +18,7 @@ const SchoolListAdmin = () => {
     }, []);
 
     const fetchSchools = (token) => {
-        fetch('http://localhost:8080/api/user_data_and_schools', {
+        fetch(API_ROUTES.fetchAdminSchools, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -63,8 +63,8 @@ const SchoolListAdmin = () => {
                         <h3>{school.name}</h3>
                         <p>Rating: {school.rating}</p>
                         <p>Address: {school.address}</p>
-                        <Link to={`/driving/school/${school.id}`}>
-                            <button className="view-btn">View</button>
+                        <Link to={`/driving/school/admin/${school.id}`}>
+                            <button className="view-btn">Manage</button>
                         </Link>
                     </div>
                 </div>
