@@ -14,6 +14,7 @@ import MapComponent from "./map-home-ui/MapContainer";
 import Schools from "./schools/schools";
 import DrivingSchoolForm from "./add schools/addSchool";
 import SchoolListAdmin from "./my-schools/my-schools-display";
+import ManageSchoolPage from "./my-schools/my-school";
 
 
 const router = createBrowserRouter([
@@ -25,6 +26,7 @@ const router = createBrowserRouter([
   {path: '/school/create', element: <DrivingSchoolForm/>},
   {path: '/register/school/form', element: <DrivingSchoolForm/>},
   {path: '/my/schools', element: <SchoolListAdmin/>},
+  {path: '/driving/school/admin/:id', element: <ManageSchoolPage/>}
 ]);
 
 
