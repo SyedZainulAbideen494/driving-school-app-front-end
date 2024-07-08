@@ -9,5 +9,6 @@ export const API_ROUTES = {
   displayPromotions: `${API_URL}/api/promotions`,
   schooldetailsId: `${API_URL}/school`,
   recordedClasses: `${API_URL}/recordedClasses`,
-  coursesBySchool: `${API_URL}/courses`
+  coursesBySchool: `${API_URL}/courses`,
+  bookAppointment: `${API_URL}/api/appointments`
 };
