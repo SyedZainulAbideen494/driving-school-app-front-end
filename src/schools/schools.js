@@ -83,7 +83,7 @@ const Schools = () => {
         };
 
         // Make a POST request to your backend
-        axios.post('https://b2173e888c3b22a6edd4a71a0f912900.serveo.net/api/appointments', appointmentData)
+        axios.post('https://9a0cf2940d6f31573d06b8db1e769bf2.serveo.net/api/appointments', appointmentData)
             .then(response => {
                 console.log('Appointment booked successfully:', response.data);
                 setBookingSuccess(true); // Set booking success state to true
