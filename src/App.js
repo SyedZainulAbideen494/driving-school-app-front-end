@@ -21,7 +21,8 @@ const router = createBrowserRouter([
   {path: '/', element: <HomePage/>},
   {path: '/map', element: <MapComponent/>},
   {path: '/driving/school/:id', element: <Schools/>},
-  {path: '/school/create', element: <DrivingSchoolForm/>}
+  {path: '/school/create', element: <DrivingSchoolForm/>},
+  {path: '/register/school/form', element: <DrivingSchoolForm/>},
 ]);
 
 

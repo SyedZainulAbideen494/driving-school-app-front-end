@@ -1,134 +1,193 @@
+/* Container for the entire form */
 .container-create-driving-school {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Header section with back button and title */
+.form-header-create-driving-school {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.back-button-create-driving-school {
+  background-color: #000000;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.back-button-create-driving-school:hover {
+  background-color: #0056b3;
+}
+
+.form-header-create-driving-school h4 {
+  margin: 0;
+  font-size: 20px;
+  text-align: right;
+  color: #333;
+}
+
+
+/* Form group styling */
+.form-group-create-driving-school {
+  margin-bottom: 15px;
+}
+
+.form-group-create-driving-school label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
+  font-size: 14px;
+}
+
+.form-group-create-driving-school input,
+.form-group-create-driving-school textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+}
+
+.form-group-create-driving-school input:focus,
+.form-group-create-driving-school textarea:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.form-group-create-driving-school textarea {
+  resize: vertical;
+  height: 100px;
+}
+
+/* Error message styling */
+.error {
+  color: red;
+  font-size: 0.875em;
+  margin-top: 5px;
+}
+
+/* Submit button styling */
+.submit-btn-create-driving-school {
+  width: 100%;
+  background-color: #000000;
+  color: white;
+  border: none;
+  padding: 15px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn-create-driving-school:hover {
+  background-color: #0056b3;
+}
+
+/* Adding some margin between elements */
+.form-group-create-driving-school + .form-group-create-driving-school {
+  margin-top: 15px;
+}
+
+/* Adding a bit of padding and a subtle border for form groups */
+.form-group-create-driving-school {
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+
+/* Making form inputs more visually appealing */
+.form-group-create-driving-school input,
+.form-group-create-driving-school textarea {
+  background-color: #f8f9fa;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  border-radius: 25px;
+}
+
+/* Adjusting label styles */
+.form-group-create-driving-school label {
+  font-size: 16px;
+  color: #555;
+}
+
+/* Adding a hover effect to inputs */
+.form-group-create-driving-school input:hover,
+.form-group-create-driving-school textarea:hover {
+  border-color: #0056b3;
+}
+
+/* Style for the form container */
+.container-create-driving-school {
+  border-radius: 8px;
+  padding: 30px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Adding animation to the submit button */
+.submit-btn-create-driving-school {
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.submit-btn-create-driving-school:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+.modal-create-driving-school {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content-create-driving-school {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.green-tick-create-driving-school {
+  display: inline-block;
+  margin-bottom: 15px;
+}
+
+.green-tick-create-driving-school::before {
+  content: '✔';
+  font-size: 50px;
+  color: #28a745;
+  animation: scaleTick 0.5s ease-in-out;
+}
+
+@keyframes scaleTick {
+  0% {
+    transform: scale(0);
   }
-  
-  .header-create-driving-school {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 20px;
+  100% {
+    transform: scale(1);
   }
-  
-  .back-btn-create-driving-school {
-    display: flex;
-    align-items: center;
-    font-size: 16px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: #333;
-    padding: 8px;
-    transition: color 0.3s ease;
-  }
-  
-  .back-btn-create-driving-school:hover {
-    color: #555;
-  }
-  
-  .form-create-driving-school {
-    margin-bottom: 20px;
-  }
-  
-  .form-group-create-driving-school {
-    margin-bottom: 15px;
-  }
-  
-  .form-label-create-driving-school {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: #333;
-  }
-  
-  .form-input-create-driving-school {
-    width: calc(100% - 10px);
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 15px;
-    font-size: 14px;
-  }
-  
-  .form-input-create-driving-school:focus {
-    outline: none;
-    border-color: #7161ef;
-  }
-  
-  .textarea-create-driving-school {
-    height: 100px;
-    resize: vertical;
-  }
-  
-  .validation-message {
-    color: #ff6347;
-    font-size: 12px;
-    margin-top: 5px;
-  }
-  
-  .progress-bar-create-driving-school {
-    height: 10px;
-    background-color: #f0f0f0;
-    border-radius: 5px;
-    margin-bottom: 20px;
-  }
-  
-  .progress-bar-fill-create-driving-school {
-    height: 100%;
-    border-radius: 5px;
-    background-color: #7161ef;
-  }
-  
-  .form-actions-create-driving-school {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
-  
-  .confirm-btn-create-driving-school {
-    background-color: #000000;
-    color: #fff;
-  }
-  
-  .confirm-btn-create-driving-school:hover {
-    background-color: #5a4ac7;
-  }
-  
-  .cancel-btn-create-driving-school {
-    background-color: #ccc;
-    color: #333;
-  }
-  
-  .cancel-btn-create-driving-school:hover {
-    background-color: #bbb;
-  }
-  
-  .prev-btn-create-driving-school,
-  .next-btn-create-driving-school {
-    background-color: #f0f0f0;
-    color: #333;
-  }
-  
-  .prev-btn-create-driving-school:hover,
-  .next-btn-create-driving-school:hover {
-    background-color: #e0e0e0;
-  }
-  
-  .icon {
-    margin-right: 5px;
-  }
+}

@@ -10,5 +10,6 @@ export const API_ROUTES = {
   schooldetailsId: `${API_URL}/school`,
   recordedClasses: `${API_URL}/recordedClasses`,
   coursesBySchool: `${API_URL}/courses`,
-  bookAppointment: `${API_URL}/api/appointments`
+  bookAppointment: `${API_URL}/api/appointments`,
+  requestDrivingSchool: `${API_URL}/api/driving-schools/request`
 };
