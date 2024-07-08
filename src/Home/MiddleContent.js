@@ -7,6 +7,7 @@ import filterIcon from '../images/filter.png';
 import carCAtBn from '../images/car_catBanner.jpeg';
 import bikeCatBn from '../images/bike_catBanner.jpeg';
 import { Link } from 'react-router-dom';
+import SlidingBar from './SlidingBar'; // Import the SlidingBar component
 
 const MiddleContent = () => {
     const [drivingSchools, setDrivingSchools] = useState([]);
@@ -16,7 +17,8 @@ const MiddleContent = () => {
     const [currentPromotionIndex, setCurrentPromotionIndex] = useState(0);
     const [userName, setUserName] = useState('');
     const [profilePic, setProfilePic] = useState('');
-
+    const [isSlidingBarOpen, setIsSlidingBarOpen] = useState(false);
+    
     useEffect(() => {
         const token = localStorage.getItem('token');
         if (token) {
@@ -174,7 +176,7 @@ const MiddleContent = () => {
     return (<Fragment>
           <div className="header">
             <div className="profile">
-                <img src={`${API_ROUTES.displayImg}/${profilePic}`} alt="Profile" className="profile-pic" />
+                <img src={`${API_ROUTES.displayImg}/${profilePic}`} alt="Profile" className="profile-pic" onClick={() => setIsSlidingBarOpen(!isSlidingBarOpen)}/>
                 <input type="text" placeholder="Search" className="search-bar" />
             </div>
             <img src={filterIcon} style={{width: '20px'}}/>
@@ -221,6 +223,7 @@ const MiddleContent = () => {
   <button className="footer-btn"><FaBell style={{ color: 'black' }} /></button>
   <button className="footer-btn"><FaCog style={{ color: 'black' }} /></button>
 </div>
+<SlidingBar isOpen={isSlidingBarOpen} onClose={() => setIsSlidingBarOpen(false)} /> {/* Include SlidingBar component */}
         </Fragment>
     );
 };
