@@ -219,9 +219,8 @@ const MiddleContent = () => {
         </div>
         <div className="footer">
   <button className="footer-btn"><FaHome style={{ color: 'black' }} /></button>
-  <button className="footer-btn"><FaList style={{ color: 'black' }} /></button>
   <button className="footer-btn"><FaBell style={{ color: 'black' }} /></button>
-  <button className="footer-btn"><FaCog style={{ color: 'black' }} /></button>
+
 </div>
 <SlidingBar isOpen={isSlidingBarOpen} onClose={() => setIsSlidingBarOpen(false)} /> {/* Include SlidingBar component */}
         </Fragment>
