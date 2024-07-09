@@ -4,7 +4,9 @@ import { FaArrowLeft, FaWhatsapp, FaEdit, FaPlus, FaTrash, FaCalendarAlt, FaUser
 import './my-schools.css'; // Import CSS for styling
 import { API_ROUTES } from '../app_modules/apiRoutes'; // Assuming you have defined API_ROUTES
 import axios from 'axios';
-import EditSchoolModal from './EditSchoolModal'; // Import the modal component
+import EditSchoolModal from './EditSchoolModal'; // Import the edit modal component
+import AddClassesModal from './AddClassesModal'; // Import the add classes modal component
+import AddCoursesModal from './AddCoursesModal'; // Import the add courses modal component
 
 const ManageSchoolPage = () => {
     const { id } = useParams(); // Assumes schoolId is passed via route params
@@ -13,7 +15,9 @@ const ManageSchoolPage = () => {
     const [isAuthorized, setIsAuthorized] = useState(false);
     const [loading, setLoading] = useState(true);
     const [successMessage, setSuccessMessage] = useState(false); // State for success message
-    const [isModalOpen, setIsModalOpen] = useState(false); // State for modal visibility
+    const [isEditModalOpen, setIsEditModalOpen] = useState(false); // State for edit modal visibility
+    const [isAddClassesModalOpen, setIsAddClassesModalOpen] = useState(false); // State for add classes modal visibility
+    const [isAddCoursesModalOpen, setIsAddCoursesModalOpen] = useState(false); // State for add courses modal visibility
 
     const navigate = useNavigate();
 
@@ -68,11 +72,21 @@ const ManageSchoolPage = () => {
     };
 
     const handleEditClick = () => {
-        setIsModalOpen(true);
+        setIsEditModalOpen(true);
+    };
+
+    const handleAddClassesClick = () => {
+        setIsAddClassesModalOpen(true);
+    };
+
+    const handleAddCoursesClick = () => {
+        setIsAddCoursesModalOpen(true);
     };
 
     const handleCloseModal = () => {
-        setIsModalOpen(false);
+        setIsEditModalOpen(false);
+        setIsAddClassesModalOpen(false);
+        setIsAddCoursesModalOpen(false);
     };
 
     const handleSave = (updatedSchoolData) => {
@@ -129,8 +143,8 @@ const ManageSchoolPage = () => {
                 <h3>Actions</h3>
                 <div className="action-buttons">
                     <button className="edit-btn" onClick={handleEditClick}><FaEdit /> Edit</button>
-                    <button className="add-classes-btn"><FaPlus /> Classes</button>
-                    <button className="add-courses-btn"><FaPlus /> Courses</button>
+                    <button className="add-classes-btn" onClick={handleAddClassesClick}><FaPlus /> Classes</button>
+                    <button className="add-courses-btn" onClick={handleAddCoursesClick}><FaPlus /> Courses</button>
                     <button className="delete-school-btn"><FaTrash /> Delete School</button>
                 </div>
             </div>
@@ -158,7 +172,17 @@ const ManageSchoolPage = () => {
             )}
             <EditSchoolModal
                 schoolData={schoolData}
-                isOpen={isModalOpen}
+                isOpen={isEditModalOpen}
+                onClose={handleCloseModal}
+                onSave={handleSave}
+            />
+            <AddClassesModal
+                isOpen={isAddClassesModalOpen}
+                onClose={handleCloseModal}
+                onSave={handleSave}
+            />
+            <AddCoursesModal
+                isOpen={isAddCoursesModalOpen}
                 onClose={handleCloseModal}
                 onSave={handleSave}
             />

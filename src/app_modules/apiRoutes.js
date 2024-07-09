@@ -16,5 +16,8 @@ export const API_ROUTES = {
   getMySchoolsBtn: `${API_URL}/api/user_data/school/btn`,
   appoinemtns: `${API_URL}/api/appointments`,
   checkSchoolOwnership: `${API_URL}/api/checkSchoolOwnership`,
-  appoimnetComplete: `${API_URL}/api/appointments/complete`
+  appoimnetComplete: `${API_URL}/api/appointments/complete`,
+  updateSchool: `${API_URL}/updateSchool`,
+  addCourses: `${API_URL}/api/add/courses`,
+  addClasses: `${API_URL}/api/add/classes`
 };

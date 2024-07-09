@@ -202,3 +202,172 @@
     border-radius: 15px;
     width: 90%;
 }
+
+/* CSS for Add Course Modal */
+.modal-overlay-add-courses {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure modal is on top of other content */
+}
+
+.modal-content-add-courses {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%; /* Adjust width as needed */
+    max-width: 600px; /* Max width for larger screens */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for modal */
+}
+
+.modal-content-add-courses h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.modal-content-add-courses form {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-content-add-courses label {
+    margin-bottom: 10px;
+}
+
+.modal-content-add-courses input[type="text"],
+.modal-content-add-courses textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.modal-content-add-courses textarea {
+    height: 100px; /* Adjust textarea height as needed */
+}
+
+.modal-buttons-add-courses {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 15px;
+}
+
+.modal-buttons-add-courses button {
+    padding: 10px 20px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.modal-buttons-add-courses button[type="submit"] {
+    background-color: #007bff; /* Blue color for submit button */
+    color: #fff;
+}
+
+.modal-buttons-add-courses button[type="submit"]:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+.modal-buttons-add-courses button[type="button"] {
+    background-color: #6c757d; /* Gray color for cancel button */
+    color: #fff;
+}
+
+.modal-buttons-add-courses button[type="button"]:hover {
+    background-color: #5a6268; /* Darker shade on hover */
+}
+
+
+/* CSS for Add Class Modal */
+.modal-overlay-add-classes {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure modal is on top of other content */
+}
+
+.modal-content-add-classes {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%; /* Adjust width as needed */
+    max-width: 600px; /* Max width for larger screens */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for modal */
+}
+
+.modal-content-add-classes h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.modal-content-add-classes form {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-content-add-classes label {
+    margin-bottom: 10px;
+}
+
+.modal-content-add-classes input[type="text"],
+.modal-content-add-classes textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.modal-content-add-classes textarea {
+    height: 100px; /* Adjust textarea height as needed */
+}
+
+.modal-buttons-add-classes {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 15px;
+}
+
+.modal-buttons-add-classes button {
+    padding: 10px 20px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.modal-buttons-add-classes button[type="submit"] {
+    background-color: #007bff; /* Blue color for submit button */
+    color: #fff;
+}
+
+.modal-buttons-add-classes button[type="submit"]:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+.modal-buttons-add-classes button[type="button"] {
+    background-color: #6c757d; /* Gray color for cancel button */
+    color: #fff;
+}
+
+.modal-buttons-add-classes button[type="button"]:hover {
+    background-color: #5a6268; /* Darker shade on hover */
+}
