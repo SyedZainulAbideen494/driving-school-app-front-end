@@ -138,3 +138,55 @@
 }
 
 
+.modal-overlay-edit-school {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: flex-end; /* Aligns the modal to the bottom */
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-content-edit-school {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px 8px 0 0; /* Rounded corners at the top */
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(100%); /* Initial position is below the screen */
+    animation: slide-up 0.5s forwards; /* Slide up animation */
+}
+
+@keyframes slide-up {
+    to {
+        transform: translateY(0); /* Final position is in view */
+    }
+}
+
+.modal-buttons-edit-school {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.modal-buttons-edit-school button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.modal-buttons-edit-school button[type="submit"] {
+    background-color: #000000;
+    color: white;
+}
+
+.modal-buttons-edit-school button[type="button"] {
+    background-color: #b3b3b3;
+    color: white;
+}

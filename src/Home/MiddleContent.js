@@ -43,7 +43,6 @@ const MiddleContent = () => {
             params: { token: token }
         })
         .then(response => {
-            console.log('Driving Schools:', response.data); // Debugging log
             setDrivingSchools(response.data);
             setSponsoredSchools(response.data.filter(school => school.sponsored === 1));
         })
@@ -52,7 +51,6 @@ const MiddleContent = () => {
         // Fetch promotions
         axios.get(API_ROUTES.displayPromotions)
         .then(response => {
-            console.log('Promotions:', response.data); // Debugging log
             setPromotions(response.data);
         })
         .catch(error => console.error('Error fetching promotions:', error));
@@ -150,7 +148,6 @@ const MiddleContent = () => {
     };
 
     const renderAllDrivingSchools = () => {
-        console.log('All Driving Schools:', drivingSchools); // Log to check state before rendering
         return (
             <div className="section">
                 <h3>All Driving Schools</h3>

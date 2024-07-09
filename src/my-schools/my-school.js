@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { FaArrowLeft, FaWhatsapp, FaEdit, FaPlus, FaTrash, FaCalendarAlt, FaUsers, FaMoneyCheckAlt } from 'react-icons/fa';
 import './my-schools.css'; // Import CSS for styling
 import { API_ROUTES } from '../app_modules/apiRoutes'; // Assuming you have defined API_ROUTES
 import axios from 'axios';
+import EditSchoolModal from './EditSchoolModal'; // Import the modal component
 
 const ManageSchoolPage = () => {
     const { id } = useParams(); // Assumes schoolId is passed via route params
@@ -12,6 +13,9 @@ const ManageSchoolPage = () => {
     const [isAuthorized, setIsAuthorized] = useState(false);
     const [loading, setLoading] = useState(true);
     const [successMessage, setSuccessMessage] = useState(false); // State for success message
+    const [isModalOpen, setIsModalOpen] = useState(false); // State for modal visibility
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         checkSchoolOwnership();
@@ -59,12 +63,20 @@ const ManageSchoolPage = () => {
                 // Show success message
                 setSuccessMessage(true);
 
-                // Clear success message after 5 seconds
-                setTimeout(() => {
-                    setSuccessMessage(false);
-                }, 5000);
             })
             .catch(error => console.error('Error completing appointment:', error));
+    };
+
+    const handleEditClick = () => {
+        setIsModalOpen(true);
+    };
+
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
+    };
+
+    const handleSave = (updatedSchoolData) => {
+        setSchoolData(updatedSchoolData); // Update the school data with the new values
     };
 
     if (loading) {
@@ -84,7 +96,7 @@ const ManageSchoolPage = () => {
             {/* Header */}
             <div className="header">
                 <Link to="/" className="back-btn"><FaArrowLeft /></Link>
-                <h2>{schoolData.name}</h2>
+                <h3>{schoolData.name}</h3>
             </div>
 
             {/* School Info */}
@@ -100,12 +112,6 @@ const ManageSchoolPage = () => {
                 <h3>Appointments</h3>
                 {appointments.map(appointment => (
                     <div key={appointment.id} className="appointment-item">
-                        {successMessage ? (
-                            <div className="success-message">
-                                <span className="tick-mark">✔</span>
-                                <p>Appointment completed successfully!</p>
-                            </div>
-                        ) : (
                             <>
                                 <p><strong>Name:</strong> {appointment.name}</p>
                                 <p><strong>Phone:</strong> {appointment.phone}</p>
@@ -114,7 +120,6 @@ const ManageSchoolPage = () => {
                                 <a href={`https://api.whatsapp.com/send?phone=${appointment.phone}`} target="_blank" rel="noopener noreferrer" className="whatsapp-btn"><FaWhatsapp /> Chat</a>
                                 <button className="whatsapp-btn" onClick={() => completeAppointment(appointment.id)}>Complete</button>
                             </>
-                        )}
                     </div>
                 ))}
             </div>
@@ -123,10 +128,9 @@ const ManageSchoolPage = () => {
             <div className="section">
                 <h3>Actions</h3>
                 <div className="action-buttons">
-                    <button className="edit-btn"><FaEdit /> Edit</button>
-                    <button className="add-classes-btn"><FaPlus /> Add Classes</button>
-                    <button className="add-courses-btn"><FaPlus /> Add Courses</button>
-                    <button className="view-courses-btn">Display All Courses</button>
+                    <button className="edit-btn" onClick={handleEditClick}><FaEdit /> Edit</button>
+                    <button className="add-classes-btn"><FaPlus /> Classes</button>
+                    <button className="add-courses-btn"><FaPlus /> Courses</button>
                     <button className="delete-school-btn"><FaTrash /> Delete School</button>
                 </div>
             </div>
@@ -141,6 +145,23 @@ const ManageSchoolPage = () => {
                     <button className="option-btn"><FaCalendarAlt /> Event Management</button>
                 </div>
             </div>
+            {successMessage && (
+                <div className="success-message">
+                    <div className="tick-animation">
+                        <div className="circle">
+                            <div className="tick"></div>
+                        </div>
+                    </div>
+                    <p>Appointment completed!</p>
+                    <button className="done-btn" onClick={() => setSuccessMessage(false)}>Done</button>
+                </div>
+            )}
+            <EditSchoolModal
+                schoolData={schoolData}
+                isOpen={isModalOpen}
+                onClose={handleCloseModal}
+                onSave={handleSave}
+            />
         </div>
     );
 };
