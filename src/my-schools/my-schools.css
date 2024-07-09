@@ -190,3 +190,13 @@
     background-color: #b3b3b3;
     color: white;
 }
+
+.modal-content-edit-school input {
+    padding: 10px;
+    border-radius: 15px;
+}
+
+.modal-content-edit-school textarea {
+    padding: 10px;
+    border-radius: 15px;
+}
