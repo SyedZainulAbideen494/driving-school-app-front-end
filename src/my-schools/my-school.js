@@ -44,7 +44,7 @@ const ManageSchoolPage = () => {
 
     const fetchAppointments = () => {
         // Fetch appointments for the school from backend
-        axios.get(`${API_ROUTES.appointments}/${id}`)
+        axios.get(`${API_ROUTES.appoinemtns}/${id}`)
             .then(response => setAppointments(response.data))
             .catch(error => console.error('Error fetching appointments:', error));
     };
