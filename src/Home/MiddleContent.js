@@ -8,6 +8,8 @@ import carCAtBn from '../images/car_catBanner.jpeg';
 import bikeCatBn from '../images/bike_catBanner.jpeg';
 import { Link } from 'react-router-dom';
 import SlidingBar from './SlidingBar'; // Import the SlidingBar component
+import NotificationModal from '../notification/notification'
+import notiicon from '../images/icons8-notification-50 (1).png'
 
 const MiddleContent = () => {
     const [drivingSchools, setDrivingSchools] = useState([]);
@@ -18,7 +20,9 @@ const MiddleContent = () => {
     const [userName, setUserName] = useState('');
     const [profilePic, setProfilePic] = useState('');
     const [isSlidingBarOpen, setIsSlidingBarOpen] = useState(false);
-    
+    const [notifications, setNotifications] = useState([]);
+    const [showNotifications, setShowNotifications] = useState(false);
+
     useEffect(() => {
         const token = localStorage.getItem('token');
         if (token) {
@@ -31,6 +35,17 @@ const MiddleContent = () => {
             })
             .catch(error => {
                 console.error('Error fetching user data:', error);
+            });
+
+            // Fetch notifications for the user
+            axios.get(`${API_ROUTES.fetchNotifications}`, {
+                params: { token: token }
+            })
+            .then(response => {
+                setNotifications(response.data);
+            })
+            .catch(error => {
+                console.error('Error fetching notifications:', error);
             });
         }
     }, []);
@@ -92,7 +107,7 @@ const MiddleContent = () => {
                             <p style={{color: 'grey'}}>sponsored</p>
                             <Link to={`/driving/school/${currentSponsor.id}`}>
                                 <button className="view-btn">View</button>
-                                </Link>
+                            </Link>
                         </div>
                     </div>
                     <div className="progress-bar">
@@ -137,7 +152,7 @@ const MiddleContent = () => {
                                 <p>Rating: {school.rating}</p>
                                 <p>Address: {school.address}</p>
                                 <Link to={`/driving/school/${school.id}`}>
-                                <button className="view-btn">View</button>
+                                    <button className="view-btn">View</button>
                                 </Link>
                             </div>
                         </div>
@@ -160,7 +175,7 @@ const MiddleContent = () => {
                                 <p>Rating: {school.rating}</p>
                                 <p>Address: {school.address}</p>
                                 <Link to={`/driving/school/${school.id}`}>
-                                <button className="view-btn">View</button>
+                                    <button className="view-btn">View</button>
                                 </Link>
                             </div>
                         </div>
@@ -170,56 +185,76 @@ const MiddleContent = () => {
         );
     };
 
-    return (<Fragment>
-          <div className="header">
-            <div className="profile">
-                <img src={`${API_ROUTES.displayImg}/${profilePic}`} alt="Profile" className="profile-pic" onClick={() => setIsSlidingBarOpen(!isSlidingBarOpen)}/>
-                <input type="text" placeholder="Search" className="search-bar" />
-            </div>
-            <img src={filterIcon} style={{width: '20px'}}/>
-        </div>
-        <div className='category'>
-  <div className='category-box'>
-    <img src={carCAtBn} alt='Category 1' />
-    <p>Car Driving Schools</p>
-  </div>
-  <div className='category-box'>
-    <img src={bikeCatBn} alt='Category 2' />
-    <p>Bike Riding Schools</p>
-  </div>
-</div>
-<div className='discover-section'>
-  <div className='discover-box'>
-    <h3>Discover New Features</h3>
-    <p>Explore the latest additions to our app.</p>
-    <button>Explore</button>
-  </div>
-  <div className='discover-box'>
-    <h3>Find Events Near You</h3>
-    <p>Discover local events and activities.</p>
-    <button>Find Events</button>
-  </div>
-  <div className='discover-box'>
-    <h3>Learn Something New</h3>
-    <p>Access tutorials and resources.</p>
-    <button>Start Learning</button>
-  </div>
-</div>
-        <div className="middle-content">
-            {renderSponsoredSchool()}
-            {renderPromotionBanners()}
-            {renderBestRatedSchools()}
-            {renderAllDrivingSchools()}
-            <footer>
-                <p>Powered By Saz</p>
-            </footer>
-        </div>
-        <div className="footer">
-  <button className="footer-btn"><FaHome style={{ color: 'black' }} /></button>
-  <button className="footer-btn"><FaBell style={{ color: 'black' }} /></button>
+    const toggleNotificationsModal = () => {
+        setShowNotifications(!showNotifications);
+    };
 
-</div>
-<SlidingBar isOpen={isSlidingBarOpen} onClose={() => setIsSlidingBarOpen(false)} /> {/* Include SlidingBar component */}
+    return (
+        <Fragment>
+            <div className="header">
+                <div className="profile">
+                    <img src={`${API_ROUTES.displayImg}/${profilePic}`} alt="Profile" className="profile-pic" onClick={() => setIsSlidingBarOpen(!isSlidingBarOpen)}/>
+                    <input type="text" placeholder="Search" className="search-bar" />
+                </div>
+                <img src={notiicon} style={{width: '20px'}} onClick={toggleNotificationsModal}/>
+            </div>
+            <div className='category'>
+                <div className='category-box'>
+                    <img src={carCAtBn} alt='Category 1' />
+                    <p>Car Driving Schools</p>
+                </div>
+                <div className='category-box'>
+                    <img src={bikeCatBn} alt='Category 2' />
+                    <p>Bike Riding Schools</p>
+                </div>
+            </div>
+            <div className='discover-section'>
+                <div className='discover-box'>
+                    <h3>Discover New Features</h3>
+                    <p>Explore the latest additions to our app.</p>
+                    <button>Explore</button>
+                </div>
+                <div className='discover-box'>
+                    <h3>Find Events Near You</h3>
+                    <p>Discover local events and activities.</p>
+                    <button>Find Events</button>
+                </div>
+                <div className='discover-box'>
+                    <h3>Learn Something New</h3>
+                    <p>Access tutorials and resources.</p>
+                    <button>Start Learning</button>
+                </div>
+            </div>
+            <div className='driver-section'>
+                <div className='best-rated'>
+                    <h2>Best Rated Driving Schools</h2>
+                    <div className='rated-schools'>
+                        {renderBestRatedSchools()}
+                    </div>
+                </div>
+                <div className='sponsored-schools'>
+                    <h2>Sponsored Driving Schools</h2>
+                    <div className='sponsored-schools'>
+                        {renderSponsoredSchool()}
+                    </div>
+                </div>
+                <div className='promotions'>
+                    <h2>Promotions</h2>
+                    <div className='promotions'>
+                        {renderPromotionBanners()}
+                    </div>
+                </div>
+                <div className='all-schools'>
+                    <h2>All Driving Schools</h2>
+                    <div className='all-schools'>
+                        {renderAllDrivingSchools()}
+                    </div>
+                </div>
+            </div>
+            <SlidingBar isOpen={isSlidingBarOpen} onClose={() => setIsSlidingBarOpen(false)} userName={userName} />
+            {showNotifications && (
+                <NotificationModal notifications={notifications} onClose={toggleNotificationsModal} />
+            )}
         </Fragment>
     );
 };

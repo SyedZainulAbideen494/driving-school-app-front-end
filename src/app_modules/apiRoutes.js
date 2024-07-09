@@ -19,5 +19,6 @@ export const API_ROUTES = {
   appoimnetComplete: `${API_URL}/api/appointments/complete`,
   updateSchool: `${API_URL}/updateSchool`,
   addCourses: `${API_URL}/api/add/courses`,
-  addClasses: `${API_URL}/api/add/classes`
+  addClasses: `${API_URL}/api/add/classes`,
+  fetchNotifications: `${API_URL}/fetchNotifications`
 };
