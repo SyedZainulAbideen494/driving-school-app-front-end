@@ -15,5 +15,6 @@ export const API_ROUTES = {
   fetchAdminSchools: `${API_URL}/api/user_data_and_schools`,
   getMySchoolsBtn: `${API_URL}/api/user_data/school/btn`,
   appoinemtns: `${API_URL}/api/appointments`,
-  checkSchoolOwnership: `${API_URL}/api/checkSchoolOwnership`
+  checkSchoolOwnership: `${API_URL}/api/checkSchoolOwnership`,
+  appoimnetComplete: `${API_URL}/api/appointments/complete`
 };

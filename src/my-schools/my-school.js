@@ -11,6 +11,7 @@ const ManageSchoolPage = () => {
     const [appointments, setAppointments] = useState([]);
     const [isAuthorized, setIsAuthorized] = useState(false);
     const [loading, setLoading] = useState(true);
+    const [successMessage, setSuccessMessage] = useState(false); // State for success message
 
     useEffect(() => {
         checkSchoolOwnership();
@@ -49,6 +50,23 @@ const ManageSchoolPage = () => {
             .catch(error => console.error('Error fetching appointments:', error));
     };
 
+    const completeAppointment = (appointmentId) => {
+        axios.put(`${API_ROUTES.appoimnetComplete}/${appointmentId}`, { active: 0 })
+            .then(response => {
+                // Remove the completed appointment from the list
+                setAppointments(prevAppointments => prevAppointments.filter(appointment => appointment.id !== appointmentId));
+
+                // Show success message
+                setSuccessMessage(true);
+
+                // Clear success message after 5 seconds
+                setTimeout(() => {
+                    setSuccessMessage(false);
+                }, 5000);
+            })
+            .catch(error => console.error('Error completing appointment:', error));
+    };
+
     if (loading) {
         return <p>Loading...</p>;
     }
@@ -82,11 +100,21 @@ const ManageSchoolPage = () => {
                 <h3>Appointments</h3>
                 {appointments.map(appointment => (
                     <div key={appointment.id} className="appointment-item">
-                        <p><strong>Name:</strong> {appointment.name}</p>
-                        <p><strong>Phone:</strong> {appointment.phone}</p>
-                        <p><strong>Date:</strong> {new Date(appointment.date_slot).toLocaleDateString()}</p>
-                        <p><strong>Time:</strong> {appointment.time_slot}</p>
-                        <a href={`https://api.whatsapp.com/send?phone=${appointment.phone}`} target="_blank" rel="noopener noreferrer" className="whatsapp-btn"><FaWhatsapp /> Chat</a>
+                        {successMessage ? (
+                            <div className="success-message">
+                                <span className="tick-mark">✔</span>
+                                <p>Appointment completed successfully!</p>
+                            </div>
+                        ) : (
+                            <>
+                                <p><strong>Name:</strong> {appointment.name}</p>
+                                <p><strong>Phone:</strong> {appointment.phone}</p>
+                                <p><strong>Date:</strong> {new Date(appointment.date_slot).toLocaleDateString()}</p>
+                                <p><strong>Time:</strong> {appointment.time_slot}</p>
+                                <a href={`https://api.whatsapp.com/send?phone=${appointment.phone}`} target="_blank" rel="noopener noreferrer" className="whatsapp-btn"><FaWhatsapp /> Chat</a>
+                                <button className="whatsapp-btn" onClick={() => completeAppointment(appointment.id)}>Complete</button>
+                            </>
+                        )}
                     </div>
                 ))}
             </div>
