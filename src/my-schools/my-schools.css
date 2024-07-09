@@ -194,9 +194,11 @@
 .modal-content-edit-school input {
     padding: 10px;
     border-radius: 15px;
+    width: 90%;
 }
 
 .modal-content-edit-school textarea {
     padding: 10px;
     border-radius: 15px;
+    width: 90%;
 }
