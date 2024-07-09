@@ -1,4 +1,4 @@
-const API_URL = 'https://9a0cf2940d6f31573d06b8db1e769bf2.serveo.net';
+const API_URL = 'https://a954bb2eea39a07d3bb8e081d05cebf9.serveo.net';
 
 export const API_ROUTES = {
   login: `${API_URL}/login`,
@@ -15,5 +15,4 @@ export const API_ROUTES = {
   fetchAdminSchools: `${API_URL}/api/user_data_and_schools`,
   getMySchoolsBtn: `${API_URL}/api/user_data/school/btn`,
   appoinemtns: `${API_URL}/api/appointments`,
-  maonthlyAppoinmentsGrpah: `${API_URL}/monthly-appointments`
 };
