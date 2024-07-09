@@ -227,25 +227,21 @@ const MiddleContent = () => {
             </div>
             <div className='driver-section'>
                 <div className='best-rated'>
-                    <h2>Best Rated Driving Schools</h2>
                     <div className='rated-schools'>
                         {renderBestRatedSchools()}
                     </div>
                 </div>
                 <div className='sponsored-schools'>
-                    <h2>Sponsored Driving Schools</h2>
                     <div className='sponsored-schools'>
                         {renderSponsoredSchool()}
                     </div>
                 </div>
                 <div className='promotions'>
-                    <h2>Promotions</h2>
                     <div className='promotions'>
                         {renderPromotionBanners()}
                     </div>
                 </div>
                 <div className='all-schools'>
-                    <h2>All Driving Schools</h2>
                     <div className='all-schools'>
                         {renderAllDrivingSchools()}
                     </div>
