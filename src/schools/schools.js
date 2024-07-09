@@ -178,7 +178,7 @@ const Schools = () => {
                         <span>Recorded Classes</span>
                     </div>
                     <div className="detail-content">
-                        {recordedClasses.slice(0, 2).map((recordedClass, index) => (
+                        {recordedClasses.map((recordedClass, index) => (
                             <div key={index} className="video-card">
                                 {/* Video Container */}
                                 <div className="video-container">
