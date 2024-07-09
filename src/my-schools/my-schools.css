@@ -1,10 +1,30 @@
 .manage-school-page {
     padding: 20px;
+    background-color: #f4f4f9;
+    font-family: Arial, sans-serif;
 }
 
+.header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
 
+.back-btn {
+    margin-right: 10px;
+    text-decoration: none;
+    color: #555;
+}
+
+.back-btn:hover {
+    color: #000;
+}
 
 .school-info {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
 }
 
@@ -16,12 +36,22 @@
     margin-bottom: 10px;
 }
 
+.section {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
 
 .appointment-item {
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 10px;
+    border-bottom: 1px solid #eee;
+    padding: 10px 0;
     margin-bottom: 10px;
+}
+
+.appointment-item:last-child {
+    border-bottom: none;
 }
 
 .whatsapp-btn {
@@ -44,26 +74,65 @@
     background-color: #128C7E;
 }
 
-.monthly-appointments-chart {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.chart-placeholder {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    height: 200px;
-}
-
-.bar {
-    width: 8%;
-    background-color: #4CAF50;
-    margin: 0 1%;
-}
-
 .action-buttons {
     display: flex;
     flex-wrap: wrap;
+    gap: 10px;
 }
 
+.action-buttons button {
+    flex: 1;
+    padding: 10px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.edit-btn {
+    background-color: #007bff;
+    color: white;
+}
+
+.add-classes-btn, .add-courses-btn {
+    background-color: #28a745;
+    color: white;
+}
+
+.view-courses-btn {
+    background-color: #17a2b8;
+    color: white;
+}
+
+.delete-school-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+.additional-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.option-btn {
+    flex: 1;
+    padding: 10px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.option-btn {
+    background-color: #6c757d;
+    color: white;
+}

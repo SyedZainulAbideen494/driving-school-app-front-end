@@ -1,20 +1,39 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { FaArrowLeft, FaWhatsapp, FaEdit, FaPlus, FaTrash } from 'react-icons/fa';
+import { FaArrowLeft, FaWhatsapp, FaEdit, FaPlus, FaTrash, FaCalendarAlt, FaUsers, FaMoneyCheckAlt } from 'react-icons/fa';
 import './my-schools.css'; // Import CSS for styling
 import { API_ROUTES } from '../app_modules/apiRoutes'; // Assuming you have defined API_ROUTES
 import axios from 'axios';
-import { Line } from 'react-chartjs-2';
 
 const ManageSchoolPage = () => {
     const { id } = useParams(); // Assumes schoolId is passed via route params
     const [schoolData, setSchoolData] = useState(null);
     const [appointments, setAppointments] = useState([]);
+    const [isAuthorized, setIsAuthorized] = useState(false);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetchSchoolData();
-        fetchAppointments();
+        checkSchoolOwnership();
     }, []);
+
+    const checkSchoolOwnership = () => {
+        const token = localStorage.getItem('token'); // Assuming token is stored in local storage
+        axios.post(`${API_ROUTES.checkSchoolOwnership}`, { schoolId: id, token })
+            .then(response => {
+                if (response.data.message === 'Authorized') {
+                    setIsAuthorized(true);
+                    fetchSchoolData();
+                    fetchAppointments();
+                } else {
+                    setIsAuthorized(false);
+                }
+                setLoading(false);
+            })
+            .catch(error => {
+                console.error('Error checking school ownership:', error);
+                setLoading(false);
+            });
+    };
 
     const fetchSchoolData = () => {
         // Fetch school details from backend
@@ -25,17 +44,22 @@ const ManageSchoolPage = () => {
 
     const fetchAppointments = () => {
         // Fetch appointments for the school from backend
-        axios.get(`${API_ROUTES.appoinemtns}/${id}`)
+        axios.get(`${API_ROUTES.appointments}/${id}`)
             .then(response => setAppointments(response.data))
             .catch(error => console.error('Error fetching appointments:', error));
     };
 
+    if (loading) {
+        return <p>Loading...</p>;
+    }
 
+    if (!isAuthorized) {
+        return <p>Page Restricted</p>;
+    }
 
     if (!schoolData) {
         return <p>Loading...</p>;
     }
-
 
     return (
         <div className="manage-school-page">
@@ -82,7 +106,12 @@ const ManageSchoolPage = () => {
             {/* Additional Options */}
             <div className="section">
                 <h3>Additional Options for Admin</h3>
-                {/* Add more admin-specific options here */}
+                <div className="additional-options">
+                    <button className="option-btn"><FaCalendarAlt /> View Schedule</button>
+                    <button className="option-btn"><FaUsers /> Manage Staff</button>
+                    <button className="option-btn"><FaMoneyCheckAlt /> Financial Reports</button>
+                    <button className="option-btn"><FaCalendarAlt /> Event Management</button>
+                </div>
             </div>
         </div>
     );
