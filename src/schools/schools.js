@@ -195,11 +195,6 @@ const Schools = () => {
                                 </div>
                             </div>
                         ))}
-
-                        {/* See All Classes Button */}
-                        <div className="see-all-classes">
-                            <Link to={`/recorded/classes/${schoolId}`} className="see-all-btn">See All Classes</Link>
-                        </div>
                     </div>
                 </div>
 
