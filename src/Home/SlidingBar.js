@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaSchool, FaBell, FaSignOutAlt } from 'react-icons/fa';
+import { FaSchool, FaBell, FaSignOutAlt, FaAd } from 'react-icons/fa'; // Import FaAd for Manage Ads icon
 import './SlidingBar.css'; // Import the CSS for the sliding bar
 import { useNavigate } from 'react-router-dom';
 import { API_ROUTES } from '../app_modules/apiRoutes';
@@ -43,8 +43,12 @@ const SlidingBar = ({ isOpen, onClose }) => {
     };
 
     const handleRedirectMySchool = () => {
-        navigate('/my/schools')
-    }
+        navigate('/my/schools');
+    };
+
+    const handleRedirectManageAds = () => {
+        navigate('/manage/ads');
+    };
 
     const handleLogout = () => {
         localStorage.removeItem('token');
@@ -63,6 +67,7 @@ const SlidingBar = ({ isOpen, onClose }) => {
                 {drivingSchools.length > 0 &&
                     <button className="sliding-bar-btn" onClick={handleRedirectMySchool}><FaSchool /> My Schools</button>
                 }
+                <button className="sliding-bar-btn" onClick={handleRedirectManageAds}><FaAd /> Manage Ads</button> {/* Icon for Manage Ads */}
                 <button className="sliding-bar-btn" onClick={handleLogout}><FaSignOutAlt /> Logout</button>
             </div>
         </div>

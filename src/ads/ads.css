@@ -1,0 +1,184 @@
+/* Form Container */
+.ads-form-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 320px;
+  }
+  
+  .ads-form-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .back-button {
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  
+  .ads-form-header h2 {
+    margin: 0;
+    font-size: 1.5em;
+  }
+  
+  /* Form Group */
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .form-control {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .form-control-range {
+    width: 100%;
+  }
+  
+  .duration-display {
+    display: block;
+    margin-top: 5px;
+  }
+  
+  .form-control-file {
+    width: 100%;
+  }
+  
+  .submit-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 1em;
+    cursor: pointer;
+  }
+  
+  .submit-button:hover {
+    background-color: #0056b3;
+  }
+
+  
+.current-funds {
+  margin-left: auto;
+}
+
+.add-ad-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.ads-section {
+  margin-bottom: 30px;
+}
+
+.ad-item {
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.ad-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.ad-info h3 {
+  margin-bottom: 10px;
+}
+
+.ad-banner {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.ad-banner img {
+  max-width: 100%;
+  max-height: 200px; /* Adjust height as needed */
+  object-fit: contain;
+}
+
+.visit-btn {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+}
+
+.visit-btn svg {
+  margin-left: 5px;
+}
+
+.add-funds-page {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.add-funds-page h1 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.add-funds-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.add-funds-form input {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.add-funds-form button {
+  padding: 12px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.add-funds-form button:hover {
+  background-color: #0056b3;
+}
+
+.error-message {
+  color: red;
+  margin-top: 10px;
+  font-size: 14px;
+}

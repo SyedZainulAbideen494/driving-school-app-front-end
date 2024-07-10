@@ -15,6 +15,9 @@ import Schools from "./schools/schools";
 import DrivingSchoolForm from "./add schools/addSchool";
 import SchoolListAdmin from "./my-schools/my-schools-display";
 import ManageSchoolPage from "./my-schools/my-school";
+import AdForm from "./ads/ads-form";
+import ManageAdsPage from "./ads/manage-ads";
+import AddFunds from "./ads/add-funds";
 
 
 const router = createBrowserRouter([
@@ -26,7 +29,10 @@ const router = createBrowserRouter([
   {path: '/school/create', element: <DrivingSchoolForm/>},
   {path: '/register/school/form', element: <DrivingSchoolForm/>},
   {path: '/my/schools', element: <SchoolListAdmin/>},
-  {path: '/driving/school/admin/:id', element: <ManageSchoolPage/>}
+  {path: '/driving/school/admin/:id', element: <ManageSchoolPage/>},
+  {path: '/run/ads', element: <AdForm/>},
+  {path: '/manage/ads', element: <ManageAdsPage/>},
+  {path: '/add/funds', element: <AddFunds/>}
 ]);
 
 

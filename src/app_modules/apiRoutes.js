@@ -1,4 +1,4 @@
-const API_URL = 'https://cf129c3b8d3311cad454c3c78f3bb216.serveo.net';
+const API_URL = 'https://46b5ce925d60d1e7ff2f507e9b202629.serveo.net';
 
 export const API_ROUTES = {
   login: `${API_URL}/login`,
@@ -20,5 +20,9 @@ export const API_ROUTES = {
   updateSchool: `${API_URL}/updateSchool`,
   addCourses: `${API_URL}/api/add/courses`,
   addClasses: `${API_URL}/api/add/classes`,
-  fetchNotifications: `${API_URL}/fetchNotifications`
+  runAds: `${API_URL}/ads/run`,
+  fetchNotifications: `${API_URL}/fetchNotifications`,
+  fetchAdFunds: `${API_URL}/api/getCurrentFunds`,
+  getUserAds: `${API_URL}/api/user/getAds`,
+  addFunds: `${API_URL}/create-checkout-session`
 };
