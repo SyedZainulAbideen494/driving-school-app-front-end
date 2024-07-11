@@ -1,232 +1,81 @@
 /* Header styling */
 .header {
-    background-color: #FEFEFE;
-    color: #fff;
-    padding: 15px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border-radius: 25px;
-    margin: 10px;
+  background-color: #181818; /* Dark background for better contrast */
+  color: #fff;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 25px;
+  margin: 10px;
 }
 
 /* Profile section */
 .profile {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .profile-pic {
-    width: 20px;
-    height: 20px;
-    margin-right: 10px;
-    border-radius: 50%;
+  width: 30px; /* Increased size for better visibility */
+  height: 30px; /* Increased size for better visibility */
+  margin-right: 10px;
+  border-radius: 50%;
 }
 
 .search-bar {
-    padding: 10px;
-    border: none;
-    border-radius: 15px;
-    width: 200px;
-    font-size: 14px;
-    background-color: #EEF4F4; /* Slightly lighter than background */
-    color: #fff;
-    outline: none;
-    margin-left: 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 15px;
+  width: 90%; /* Slightly wider for better usability */
+  font-size: 14px;
+  background-color: #333; /* Darker background for better contrast */
+  color: #fff;
+  outline: none;
+  margin-left: 10px;
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
 }
 
 .search-bar::placeholder {
-    color: #ccc;
+  color: #bbb; /* Slightly darker placeholder color */
 }
+
+.search-bar:hover {
+  background-color: #666; /* Darker background on hover */
+}
+
 
 /* Footer styling */
 .footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 80%;
-    background-color: #FEFEFE;
-    color: #fff;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 7px 20px;
-    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
-    opacity: 90%;
-    margin-left: 10px;
-    border-radius: 25px;
-    margin-bottom: 2px;
-    margin-right: 10px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 80%;
+  background-color: #181818;
+  color: #fff;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 2px 20px;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+  opacity: 90%;
+  margin-left: 10px;
+  border-radius: 25px;
+  margin-bottom: 2px;
+  margin-right: 10px;
 }
 
 .footer-btn {
-    background-color: transparent;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    font-size: 20px;
+  background-color: transparent;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
 }
 
 .footer-btn:hover {
-    text-decoration: underline;
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 5px;
+  text-decoration: underline;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
 }
-
-.middle-content {
-    padding: 20px;
-}
-
-.section {
-    margin-bottom: 100px;
-}
-
-.section-container {
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-/* Cards and lists */
-.school-card,
-.promotion-card,
-.school-card-sponsored {
-    background-color: #fffdfd;
-    margin-bottom: 20px;
-    padding: 15px;
-    border-radius: 25px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-
-.school-image,
-.promotion-image {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 10px 10px 0 0;
-}
-
-.school-details {
-    padding: 10px 0;
-}
-
-/* Buttons */
-.view-btn,
-.like-btn {
-    padding: 8px 16px;
-    margin-top: 10px;
-    border: none;
-    width: 100%;
-    border-radius: 15px;
-    cursor: pointer;
-    background-color: #000000; /* Purple color */
-    color: #fff;
-    transition: background-color 0.3s ease;
-}
-
-.view-btn:hover,
-.like-btn:hover {
-    background-color: #7b1fa2; /* Darker purple on hover */
-}
-
-
-/* Container for the category section */
-.category {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center; /* Center items horizontally */
-    padding: 7px;
-    margin-top: 30px;
-    margin-bottom: 40px;
-  }
-  
-  /* Individual category boxes */
-  .category-box {
-    width: 120px; /* Set a fixed width for better alignment */
-    margin: 8px; /* Adjust margin for spacing between boxes */
-    border-radius: 15px;
-    padding: 15px;
-    text-align: center;
-    background-color: #fffdfd; /* Light background color */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Increased shadow on hover */
-  }
-  
-  .category-box:hover {
-    transform: translateY(-5px); /* Lift box on hover */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Increased shadow on hover */
-  }
-  
-  .category-box img {
-    max-width: 100%; /* Ensure image fits within container */
-    height: auto;
-    border-radius: 8px;
-    margin-bottom: 10px; /* Spacing between image and text */
-  }
-  
-  .category-box p {
-    margin: 0;
-    color: #333333; /* Text color */
-  }
-
-  /* Discover section container */
-.discover-section {
-    padding: 20px;
-  }
-  
-/* Individual discover boxes */
-.discover-box {
-    width: 250px; /* Adjust width as needed */
-    padding: 20px;
-    text-align: center;
-    border-radius: 25px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    margin: 20px auto;
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-  }
-  
-  .discover-box:hover {
-    transform: translateY(-5px); /* Lift box on hover */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Increased shadow on hover */
-  }
-  
-  /* Specific background colors */
-  .discover-box:nth-child(1) {
-    background-color: #6D4AFE; /* First box background color */
-  }
-  
-  .discover-box:nth-child(2) {
-    background-color: #F075B4; /* Second box background color */
-  }
-  
-  .discover-box:nth-child(3) {
-    background-color: #AC94F0; /* Third box background color */
-  }
-  
-  .discover-box h3 {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-    color: #ffffff; /* Text color */
-  }
-  
-  .discover-box p {
-    color: #ffffff; /* Subdued text color */
-  }
-  
-  .discover-box button {
-    padding: 10px 20px;
-    background-color: #000000; /* Green button color */
-    color: #ffffff; /* Button text color */
-    border: none;
-    border-radius: 15px;
-    cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
-  }
-  
-  .discover-box button:hover {
-    background-color: #585858; /* Darker green on hover */
-  }
-
-
-
-
-  

@@ -198,59 +198,17 @@ const MiddleContent = () => {
                 </div>
                 <img src={notiicon} style={{width: '20px'}} onClick={toggleNotificationsModal}/>
             </div>
-            <div className='category'>
-                <div className='category-box'>
-                    <img src={carCAtBn} alt='Category 1' />
-                    <p>Car Driving Schools</p>
-                </div>
-                <div className='category-box'>
-                    <img src={bikeCatBn} alt='Category 2' />
-                    <p>Bike Riding Schools</p>
-                </div>
-            </div>
-            <div className='discover-section'>
-                <div className='discover-box'>
-                    <h3>Discover New Features</h3>
-                    <p>Explore the latest additions to our app.</p>
-                    <button>Explore</button>
-                </div>
-                <div className='discover-box'>
-                    <h3>Find Events Near You</h3>
-                    <p>Discover local events and activities.</p>
-                    <button>Find Events</button>
-                </div>
-                <div className='discover-box'>
-                    <h3>Learn Something New</h3>
-                    <p>Access tutorials and resources.</p>
-                    <button>Start Learning</button>
-                </div>
-            </div>
-            <div className='driver-section'>
-                <div className='best-rated'>
-                    <div className='rated-schools'>
-                        {renderBestRatedSchools()}
-                    </div>
-                </div>
-                <div className='sponsored-schools'>
-                    <div className='sponsored-schools'>
-                        {renderSponsoredSchool()}
-                    </div>
-                </div>
-                <div className='promotions'>
-                    <div className='promotions'>
-                        {renderPromotionBanners()}
-                    </div>
-                </div>
-                <div className='all-schools'>
-                    <div className='all-schools'>
-                        {renderAllDrivingSchools()}
-                    </div>
-                </div>
-            </div>
+            
             <SlidingBar isOpen={isSlidingBarOpen} onClose={() => setIsSlidingBarOpen(false)} userName={userName} />
             {showNotifications && (
                 <NotificationModal notifications={notifications} onClose={toggleNotificationsModal} />
             )}
+             <div className="footer">
+            <button className="footer-btn"><FaHome /></button>
+            <button className="footer-btn"><FaList /></button>
+            <button className="footer-btn"><FaBell /></button>
+            <button className="footer-btn"><FaCog /></button>
+        </div>
         </Fragment>
     );
 };
