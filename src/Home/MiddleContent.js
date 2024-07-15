@@ -181,18 +181,18 @@ const MiddleContent = () => {
 
     const renderAllDrivingSchools = () => {
         return (
-            <div className="section">
+            <div className="section-all-driving-schools">
                 <h3>All Services</h3>
                 <div className="school-list-all-driving-schools">
                     {drivingSchools.map(school => (
-                        <div key={school.id} className="school-card">
-                            <img src={`${API_ROUTES.displayImg}/${school.logo_url}`} alt={school.name} className="school-image" />
-                            <div className="school-details">
+                        <div key={school.id} className="school-card-all-driving-schools">
+                            <img src={`${API_ROUTES.displayImg}/${school.logo_url}`} alt={school.name} className="school-image-all-driving-schools" />
+                            <div className="school-details-all-driving-schools">
                                 <h3>{school.name}</h3>
                                 <p>Rating: {school.rating}</p>
                                 <p>Address: {school.address}</p>
                                 <Link to={`/driving/school/${school.id}`}>
-                                    <button className="view-btn">View</button>
+                                    <button className="view-btn-all-driving-schools">View</button>
                                 </Link>
                             </div>
                         </div>
@@ -202,6 +202,7 @@ const MiddleContent = () => {
         );
     };
 
+    
     const renderFeaturedServices = () => {
         if (featuredServices.length === 0) {
             return <p>No featured services available.</p>;
