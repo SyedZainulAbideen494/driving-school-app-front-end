@@ -107,21 +107,23 @@ const MiddleContent = () => {
         const currentSponsor = sponsoredSchools[currentSponsorIndex];
 
         return (
-            <div className="section-sponsered">
-                <div className="school-list sponsored-list">
-                    <div key={currentSponsor.id} className="school-card-sponsored">
+            <div className="section-sponsored">
+            <div className="sponsored-list">
+                <div className="school-card-sponsored">
+                    <div className="school-image-container">
                         <img src={`${API_ROUTES.displayImg}/${currentSponsor.logo_url}`} alt={currentSponsor.name} className="school-image" />
-                        <div className="school-details-sponsored">
-                            <h3>{currentSponsor.name}</h3>
-                            <p>{currentSponsor.location}</p>
-                            <p style={{color: 'grey'}}>sponsored</p>
-                            <Link to={`/driving/school/${currentSponsor.id}`}>
-                                <button className="view-btn-sponsored">View</button>
-                            </Link>
+                    </div>
+                    <div className="school-details-sponsored">
+                        <h3>{currentSponsor.name}</h3>
+                        <p className="location">{currentSponsor.location}</p>
+                        <p className="sponsor-label">Sponsored</p>
+                        <div className="view-link">
+                            <Link to={`/driving/school/${currentSponsor.id}`} className="view-btn-sponsored">View</Link>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
         );
     };
 
@@ -134,33 +136,41 @@ const MiddleContent = () => {
 
         return (
             <div className="section-promotion">
-                <h4>Promotions</h4>
-                <div className="promotion-list">
-                    <div key={currentPromotion.id} className="promotion-card">
+            <h4>Promotions</h4>
+            <div className="promotion-list">
+                <div key={currentPromotion.id} className="promotion-card">
+                    <div className="promotion-image-container">
                         <img src={`${API_ROUTES.displayImg}/${currentPromotion.banner_url}`} alt={currentPromotion.title} className="promotion-image" />
-                        <p>{currentPromotion.title}</p>
+                    </div>
+                    <div className="promotion-details">
+                        <p className="promotion-title">{currentPromotion.title}</p>
+                        <a href={currentPromotion.website} className="visit-link">Visit Site</a>
                     </div>
                 </div>
             </div>
+        </div>
         );
     };
-
     const renderBestRatedSchools = () => {
         const bestRatedSchools = drivingSchools.filter(school => school.rating >= 4); // Example criteria for best rated
         return (
             <div className="section">
-                <h4>Best Rated Schools</h4>
+                <div className="section-header">
+                    <h4>Best Rated Services</h4>
+                </div>
                 <div className="school-list-best-schools">
                     {bestRatedSchools.map(school => (
                         <div key={school.id} className="school-card">
-                            <img src={`${API_ROUTES.displayImg}/${school.logo_url}`} alt={school.name} className="school-image" />
-                            <div className="school-details">
-                                <h3>{school.name}</h3>
-                                <p>Rating: {school.rating}</p>
-                                <p>Address: {school.address}</p>
-                                <Link to={`/driving/school/${school.id}`}>
-                                    <button className="view-btn">View</button>
-                                </Link>
+                            <div className="school-card-content">
+                                <img src={`${API_ROUTES.displayImg}/${school.logo_url}`} alt={school.name} className="school-image" />
+                                <div className="school-details">
+                                    <h3>{school.name}</h3>
+                                    <p>Rating: {school.rating}</p>
+                                    <p>Address: {school.address}</p>
+                                    <Link to={`/driving/school/${school.id}`} className="view-link">
+                                        View
+                                    </Link>
+                                </div>
                             </div>
                         </div>
                     ))}
@@ -172,7 +182,7 @@ const MiddleContent = () => {
     const renderAllDrivingSchools = () => {
         return (
             <div className="section">
-                <h3>All Driving Schools</h3>
+                <h3>All Services</h3>
                 <div className="school-list-all-driving-schools">
                     {drivingSchools.map(school => (
                         <div key={school.id} className="school-card">
@@ -222,29 +232,52 @@ const MiddleContent = () => {
         setShowNotifications(!showNotifications);
     };
 
+      
+
     return (
         <Fragment>
-            <div className="header">
-                <div className="profile">
-                    <img src={`${API_ROUTES.displayImg}/${profilePic}`} alt="Profile" className="profile-pic" onClick={() => setIsSlidingBarOpen(!isSlidingBarOpen)} />
-                </div>
-                <img src={notiicon} style={{ width: '20px' }} onClick={toggleNotificationsModal} />
+        <div className="header">
+            <div className="profile">
+                <img src={`${API_ROUTES.displayImg}/${profilePic}`} alt="Profile" className="profile-pic" onClick={() => setIsSlidingBarOpen(!isSlidingBarOpen)} />
             </div>
+            <img src={notiicon} style={{ width: '20px' }} onClick={toggleNotificationsModal} />
+        </div>
+        
+        {/* Render Sponsored Schools */}
+        <div className="sponsored-section">
             {renderSponsoredSchool()}
+        </div>
+        
+        {/* Render Promotion Banners */}
+        <div className="promotion-section">
             {renderPromotionBanners()}
+        </div>
+  
+        
+        {/* Render Best Rated Schools */}
+        <div className="best-rated-section">
             {renderBestRatedSchools()}
+        </div>
+        
+        {/* Render All Driving Schools */}
+        <div className="all-schools-section">
             {renderAllDrivingSchools()}
-            <SlidingBar isOpen={isSlidingBarOpen} onClose={() => setIsSlidingBarOpen(false)} userName={userName} />
-            {showNotifications && (
-                <NotificationModal notifications={notifications} onClose={toggleNotificationsModal} />
-            )}
-            <div className="footer">
-                <button className="footer-btn"><FaHome /></button>
-                <button className="footer-btn"><FaList /></button>
-                <button className="footer-btn"><FaBell /></button>
-                <button className="footer-btn"><FaCog /></button>
-            </div>
-        </Fragment>
+        </div>
+        
+        {/* Sliding Sidebar and Notifications */}
+        <SlidingBar isOpen={isSlidingBarOpen} onClose={() => setIsSlidingBarOpen(false)} userName={userName} />
+        {showNotifications && (
+            <NotificationModal notifications={notifications} onClose={toggleNotificationsModal} />
+        )}
+        
+        {/* Footer with Navigation Buttons */}
+        <div className="footer">
+            <button className="footer-btn"><FaHome /> </button>
+            <button className="footer-btn"><FaList /> </button>
+            <button className="footer-btn"><FaBell /> </button>
+            <button className="footer-btn"><FaCog /> </button>
+        </div>
+    </Fragment>
     );
 };
 
