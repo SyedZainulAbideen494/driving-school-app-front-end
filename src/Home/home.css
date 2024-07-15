@@ -379,7 +379,7 @@
 .category-image {
   width: 100%;
   height: auto;
-  max-height: 150px; /* Limit image height */
+  max-height: 170px; /* Limit image height */
   object-fit: cover;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
