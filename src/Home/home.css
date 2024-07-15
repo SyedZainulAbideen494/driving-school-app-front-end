@@ -90,7 +90,7 @@
   transform: translateY(-5px);
 }
 
-.school-image-container {
+.school-image-container-sponsored {
   width: 100%; /* Adjust size as needed */
   height: 100%; /* Adjust size as needed */
   overflow: hidden;
@@ -98,7 +98,7 @@
   border-bottom-left-radius: 12px;
 }
 
-.school-image {
+.school-image-sponsored {
   width: 100%;
   height: auto;
   object-fit: cover;
@@ -126,7 +126,7 @@
   font-size: 0.9rem; /* Smaller font size */
 }
 
-.view-link {
+.view-link-sponsored {
   margin-top: 10px; /* Space between details and button */
 }
 

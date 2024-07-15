@@ -110,14 +110,14 @@ const MiddleContent = () => {
             <div className="section-sponsored">
             <div className="sponsored-list">
                 <div className="school-card-sponsored">
-                    <div className="school-image-container">
-                        <img src={`${API_ROUTES.displayImg}/${currentSponsor.logo_url}`} alt={currentSponsor.name} className="school-image" />
+                    <div className="school-image-container-sponsored">
+                        <img src={`${API_ROUTES.displayImg}/${currentSponsor.logo_url}`} alt={currentSponsor.name} className="school-image-sponsored" />
                     </div>
                     <div className="school-details-sponsored">
                         <h3>{currentSponsor.name}</h3>
                         <p className="location">{currentSponsor.location}</p>
                         <p className="sponsor-label">Sponsored</p>
-                        <div className="view-link">
+                        <div className="view-link-sponsored">
                             <Link to={`/driving/school/${currentSponsor.id}`} className="view-btn-sponsored">View</Link>
                         </div>
                     </div>
