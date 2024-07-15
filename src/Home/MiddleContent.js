@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 import SlidingBar from './SlidingBar'; // Import the SlidingBar component
 import NotificationModal from '../notification/notification'
 import notiicon from '../images/icons8-notification-50.png'
+import Category from './catigorySection';
 
 const MiddleContent = () => {
     const [drivingSchools, setDrivingSchools] = useState([]);
@@ -202,7 +203,7 @@ const MiddleContent = () => {
         );
     };
 
-    
+
     const renderFeaturedServices = () => {
         if (featuredServices.length === 0) {
             return <p>No featured services available.</p>;
@@ -243,7 +244,7 @@ const MiddleContent = () => {
             </div>
             <img src={notiicon} style={{ width: '20px' }} onClick={toggleNotificationsModal} />
         </div>
-        
+        <Category/>
         {/* Render Sponsored Schools */}
         <div className="sponsored-section">
             {renderSponsoredSchool()}

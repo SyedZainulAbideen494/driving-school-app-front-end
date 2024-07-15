@@ -343,3 +343,73 @@
 .view-btn-all-driving-schools:hover {
   background-color: #333333;
 }
+
+
+
+.category-section {
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.category-section h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.category-list {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto; /* Enable horizontal scrolling if needed */
+  white-space: nowrap; /* Ensure items stay in a single line */
+}
+
+.category-card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  min-width: 200px; /* Set minimum width for each card */
+  flex: 0 0 auto; /* Fix size of each card */
+  text-align: center;
+}
+
+.category-image {
+  width: 100%;
+  height: auto;
+  max-height: 150px; /* Limit image height */
+  object-fit: cover;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.category-details {
+  padding: 15px;
+}
+
+.category-details h4 {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+
+.category-details p {
+  margin-bottom: 10px;
+  color: #666666; /* Subdued text color */
+}
+
+.explore-btn {
+  background-color: #000000;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.explore-btn:hover {
+  background-color: #333333;
+}
