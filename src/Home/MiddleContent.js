@@ -9,7 +9,7 @@ import bikeCatBn from '../images/bike_catBanner.jpeg';
 import { Link } from 'react-router-dom';
 import SlidingBar from './SlidingBar'; // Import the SlidingBar component
 import NotificationModal from '../notification/notification'
-import notiicon from '../images/icons8-notification-50 (1).png'
+import notiicon from '../images/icons8-notification-50.png'
 
 const MiddleContent = () => {
     const [drivingSchools, setDrivingSchools] = useState([]);
@@ -22,6 +22,7 @@ const MiddleContent = () => {
     const [isSlidingBarOpen, setIsSlidingBarOpen] = useState(false);
     const [notifications, setNotifications] = useState([]);
     const [showNotifications, setShowNotifications] = useState(false);
+    const [featuredServices, setFeaturedServices] = useState([]);
 
     useEffect(() => {
         const token = localStorage.getItem('token');
@@ -69,6 +70,15 @@ const MiddleContent = () => {
             setPromotions(response.data);
         })
         .catch(error => console.error('Error fetching promotions:', error));
+
+        // Fetch featured services
+        axios.get(API_ROUTES.fetchFeaturedServices, {
+            params: { token: token }
+        })
+        .then(response => {
+            setFeaturedServices(response.data);
+        })
+        .catch(error => console.error('Error fetching featured services:', error));
     }, []);
 
     // Rotate sponsors every 3 seconds
@@ -97,21 +107,18 @@ const MiddleContent = () => {
         const currentSponsor = sponsoredSchools[currentSponsorIndex];
 
         return (
-            <div className="section">
+            <div className="section-sponsered">
                 <div className="school-list sponsored-list">
                     <div key={currentSponsor.id} className="school-card-sponsored">
                         <img src={`${API_ROUTES.displayImg}/${currentSponsor.logo_url}`} alt={currentSponsor.name} className="school-image" />
-                        <div className="school-details">
+                        <div className="school-details-sponsored">
                             <h3>{currentSponsor.name}</h3>
                             <p>{currentSponsor.location}</p>
                             <p style={{color: 'grey'}}>sponsored</p>
                             <Link to={`/driving/school/${currentSponsor.id}`}>
-                                <button className="view-btn">View</button>
+                                <button className="view-btn-sponsored">View</button>
                             </Link>
                         </div>
-                    </div>
-                    <div className="progress-bar">
-                        <div className="progress"></div>
                     </div>
                 </div>
             </div>
@@ -126,7 +133,7 @@ const MiddleContent = () => {
         const currentPromotion = promotions[currentPromotionIndex];
 
         return (
-            <div className="section">
+            <div className="section-promotion">
                 <h4>Promotions</h4>
                 <div className="promotion-list">
                     <div key={currentPromotion.id} className="promotion-card">
@@ -185,6 +192,32 @@ const MiddleContent = () => {
         );
     };
 
+    const renderFeaturedServices = () => {
+        if (featuredServices.length === 0) {
+            return <p>No featured services available.</p>;
+        }
+
+        return (
+            <div className="section">
+                <h3>Featured Services</h3>
+                <div className="featured-services-list">
+                    {featuredServices.map(service => (
+                        <div key={service.id} className="service-card">
+                            <img src={`${API_ROUTES.displayImg}/${service.image_url}`} alt={service.name} className="service-image" />
+                            <div className="service-details">
+                                <h3>{service.name}</h3>
+                                <p>{service.description}</p>
+                                <Link to={`/service/${service.id}`}>
+                                    <button className="view-btn">View</button>
+                                </Link>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        );
+    };
+
     const toggleNotificationsModal = () => {
         setShowNotifications(!showNotifications);
     };
@@ -193,22 +226,24 @@ const MiddleContent = () => {
         <Fragment>
             <div className="header">
                 <div className="profile">
-                    <img src={`${API_ROUTES.displayImg}/${profilePic}`} alt="Profile" className="profile-pic" onClick={() => setIsSlidingBarOpen(!isSlidingBarOpen)}/>
-                    <input type="text" placeholder="Search" className="search-bar" />
+                    <img src={`${API_ROUTES.displayImg}/${profilePic}`} alt="Profile" className="profile-pic" onClick={() => setIsSlidingBarOpen(!isSlidingBarOpen)} />
                 </div>
-                <img src={notiicon} style={{width: '20px'}} onClick={toggleNotificationsModal}/>
+                <img src={notiicon} style={{ width: '20px' }} onClick={toggleNotificationsModal} />
             </div>
-            
+            {renderSponsoredSchool()}
+            {renderPromotionBanners()}
+            {renderBestRatedSchools()}
+            {renderAllDrivingSchools()}
             <SlidingBar isOpen={isSlidingBarOpen} onClose={() => setIsSlidingBarOpen(false)} userName={userName} />
             {showNotifications && (
                 <NotificationModal notifications={notifications} onClose={toggleNotificationsModal} />
             )}
-             <div className="footer">
-            <button className="footer-btn"><FaHome /></button>
-            <button className="footer-btn"><FaList /></button>
-            <button className="footer-btn"><FaBell /></button>
-            <button className="footer-btn"><FaCog /></button>
-        </div>
+            <div className="footer">
+                <button className="footer-btn"><FaHome /></button>
+                <button className="footer-btn"><FaList /></button>
+                <button className="footer-btn"><FaBell /></button>
+                <button className="footer-btn"><FaCog /></button>
+            </div>
         </Fragment>
     );
 };
