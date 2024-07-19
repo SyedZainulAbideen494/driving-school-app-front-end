@@ -63,10 +63,7 @@ const SlidingBar = ({ isOpen, onClose }) => {
         <div className={`sliding-bar ${isOpen ? 'open' : ''}`}>
             <div className="sliding-bar-content">
                 <button className="close-btn" onClick={onClose}>X</button>
-                <button className="sliding-bar-btn" onClick={handleRedirectAddSchool}><FaSchool /> Add Driving School</button>
-                {drivingSchools.length > 0 &&
-                    <button className="sliding-bar-btn" onClick={handleRedirectMySchool}><FaSchool /> My Schools</button>
-                }
+                <button className="sliding-bar-btn">My Profile</button>
                 <button className="sliding-bar-btn" onClick={handleRedirectManageAds}><FaAd /> Manage Ads</button> {/* Icon for Manage Ads */}
                 <button className="sliding-bar-btn" onClick={handleLogout}><FaSignOutAlt /> Logout</button>
             </div>

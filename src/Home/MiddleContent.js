@@ -276,7 +276,7 @@ const MiddleContent = () => {
         <div className="footer">
             <button className="footer-btn"><FaHome /> </button>
             <button className="footer-btn"><FaList /> </button>
-            <button className="footer-btn"><FaBell /> </button>
+            <button className="footer-btn" onClick={toggleNotificationsModal}><FaBell /> </button>
             <button className="footer-btn"><FaCog /> </button>
         </div>
     </Fragment>
